@@ -1,0 +1,2285 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Электробезопасность | Профессиональное руководство</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #00b4d8;
+      --primary-dark: #0096c7;
+      --secondary: #90e0ef;
+      --accent: #ff9e00;
+      --danger: #ff5252;
+      --success: #4caf50;
+      --dark-bg: #0a192f;
+      --dark-card: #112240;
+      --dark-text: #e6f1ff;
+      --dark-text-secondary: #8892b0;
+      --border: #233554;
+      --glow: 0 0 15px rgba(0, 180, 216, 0.5);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, var(--dark-bg) 0%, #020c1b 100%);
+      color: var(--dark-text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      background-attachment: fixed;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header Styles */
+    header {
+      background: rgba(10, 25, 47, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1.5rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      text-shadow: var(--glow);
+    }
+
+    .logo-text {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 10px rgba(0, 180, 216, 0.3);
+    }
+
+    /* Navigation */
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav a {
+      color: var(--dark-text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+      background: rgba(0, 180, 216, 0.1);
+      transform: translateY(-2px);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+      transform: translateX(-50%);
+    }
+
+    nav a:hover::after {
+      width: 80%;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 5rem 0;
+      text-align: center;
+      background: radial-gradient(circle at center, rgba(0, 180, 216, 0.1) 0%, transparent 70%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(0, 180, 216, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(144, 224, 239, 0.1) 0%, transparent 20%);
+      z-index: -1;
+    }
+
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 20px rgba(0, 180, 216, 0.3);
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      color: var(--dark-text-secondary);
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: var(--glow);
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      margin: 0.5rem;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px rgba(0, 180, 216, 0.7);
+    }
+
+    .cta-button::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 20px;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: rotate(30deg);
+      transition: all 0.8s;
+    }
+
+    .cta-button:hover::after {
+      left: 120%;
+    }
+
+    /* Section Styles */
+    section {
+      padding: 5rem 0;
+      position: relative;
+    }
+
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    .card {
+      background: var(--dark-card);
+      border-radius: 15px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 180, 216, 0.2);
+      border-color: var(--primary);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s ease;
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card h3 i {
+      font-size: 1.5rem;
+    }
+
+    .card p {
+      margin-bottom: 1.5rem;
+      color: var(--dark-text-secondary);
+      text-align: justify;
+    }
+
+    .card ul {
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card li {
+      margin-bottom: 0.8rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .card li::before {
+      content: '⚡';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+    }
+
+    /* Warning Box */
+    .warning-box {
+      background: rgba(255, 82, 82, 0.1);
+      border-left: 4px solid var(--danger);
+      padding: 1.5rem;
+      border-radius: 0 10px 10px 0;
+      margin: 1.5rem 0;
+    }
+
+    .warning-box h4 {
+      color: var(--danger);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Info Box */
+    .info-box {
+      background: rgba(0, 180, 216, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1.5rem;
+      border-radius: 0 10px 10px 0;
+      margin: 1.5rem 0;
+    }
+
+    .info-box h4 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Standard Box */
+    .standard-box {
+      background: rgba(144, 224, 239, 0.1);
+      border-left: 4px solid var(--secondary);
+      padding: 1.5rem;
+      border-radius: 0 10px 10px 0;
+      margin: 1.5rem 0;
+      font-family: 'Courier New', monospace;
+      font-size: 0.95rem;
+    }
+
+    .standard-box h4 {
+      color: var(--secondary);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Literature Section */
+    .literature-item {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .literature-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .literature-item h4 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .literature-item p {
+      color: var(--dark-text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Quiz Section */
+    .quiz-container {
+      background: var(--dark-card);
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .quiz-question {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .quiz-question:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .question-text {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .quiz-options {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .quiz-option {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      background: rgba(17, 34, 64, 0.7);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 1px solid var(--border);
+    }
+
+    .quiz-option:hover {
+      background: rgba(0, 180, 216, 0.2);
+      border-color: var(--primary);
+    }
+
+    .quiz-option input {
+      margin-right: 1rem;
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary);
+    }
+
+    .result-container {
+      text-align: center;
+      padding: 2rem;
+      background: rgba(0, 180, 216, 0.1);
+      border-radius: 10px;
+      margin-top: 2rem;
+      display: none;
+    }
+
+    .result-container.show {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .result-score {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    /* Test Selection */
+    .test-selection {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .test-card {
+      background: var(--dark-card);
+      border-radius: 15px;
+      padding: 1.5rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .test-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 180, 216, 0.3);
+      border-color: var(--primary);
+    }
+
+    .test-card h4 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .test-card p {
+      color: var(--dark-text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .test-card .test-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      color: var(--secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(10, 25, 47, 0.95);
+      padding: 3rem 0 2rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-text {
+      color: var(--dark-text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .copyright {
+      color: var(--dark-text-secondary);
+      font-size: 0.9rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .card {
+        padding: 1.5rem;
+      }
+      
+      .test-selection {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        padding: 3rem 0;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      nav ul {
+        gap: 0.5rem;
+      }
+      
+      nav a {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Animation for cards */
+    .card {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.6s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card:nth-child(4) { animation-delay: 0.4s; }
+    .card:nth-child(5) { animation-delay: 0.5s; }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(17, 34, 64, 0.5);
+      z-index: 1001;
+    }
+
+    .scroll-progress {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      width: 0%;
+      transition: width 0.1s ease;
+    }
+
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: var(--transition);
+      box-shadow: var(--glow);
+      z-index: 1000;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(0, 180, 216, 0.8);
+    }
+
+    /* Table styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      background: rgba(17, 34, 64, 0.5);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background: rgba(0, 180, 216, 0.2);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover {
+      background: rgba(0, 180, 216, 0.1);
+    }
+
+    /* Code block */
+    .code-block {
+      background: #002b36;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      font-family: 'Courier New', monospace;
+      font-size: 0.95rem;
+      overflow-x: auto;
+      border-left: 4px solid var(--primary);
+    }
+
+    .code-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      color: var(--secondary);
+    }
+
+    .code-title {
+      font-weight: 600;
+    }
+
+    .copy-btn {
+      background: rgba(0, 180, 216, 0.2);
+      border: none;
+      color: var(--secondary);
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .copy-btn:hover {
+      background: rgba(0, 180, 216, 0.4);
+    }
+
+    .code-content {
+      color: #93a1a1;
+    }
+
+    .code-comment {
+      color: #586e75;
+    }
+
+    .code-keyword {
+      color: #859900;
+    }
+
+    .code-string {
+      color: #2aa198;
+    }
+
+    .code-number {
+      color: #268bd2;
+    }
+
+    /* Tab navigation */
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+    }
+
+    .tab {
+      padding: 0.8rem 1.5rem;
+      background: rgba(17, 34, 64, 0.7);
+      border-radius: 30px;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 1px solid var(--border);
+    }
+
+    .tab.active, .tab:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+
+    /* Progress bar */
+    .progress-container {
+      margin: 1.5rem 0;
+    }
+
+    .progress-bar {
+      height: 10px;
+      background: rgba(17, 34, 64, 0.5);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .progress-text {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.5rem;
+      color: var(--secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .stat-card {
+      background: rgba(17, 34, 64, 0.7);
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: var(--secondary);
+      font-size: 1.1rem;
+    }
+
+    /* Filter buttons */
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .filter-btn {
+      padding: 0.5rem 1rem;
+      background: rgba(17, 34, 64, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      color: var(--dark-text-secondary);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    /* Chapter navigation */
+    .chapter-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 2rem 0;
+      justify-content: center;
+    }
+
+    .chapter-btn {
+      padding: 0.8rem 1.5rem;
+      background: rgba(17, 34, 64, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      color: var(--dark-text-secondary);
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 0.9rem;
+    }
+
+    .chapter-btn:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .chapter-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator">
+    <div class="scroll-progress" id="scrollProgress"></div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <header>
+    <div class="container header-content">
+      <div class="logo">
+        <i class="fas fa-bolt logo-icon"></i>
+        <div class="logo-text">ЭЛЕКТРОБЕЗОПАСНОСТЬ</div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#intro"><i class="fas fa-home"></i> Введение</a></li>
+          <li><a href="#chapter1"><i class="fas fa-book"></i> Глава 1</a></li>
+          <li><a href="#chapter2"><i class="fas fa-book"></i> Глава 2</a></li>
+          <li><a href="#chapter3"><i class="fas fa-book"></i> Глава 3</a></li>
+          <li><a href="#chapter4"><i class="fas fa-book"></i> Глава 4</a></li>
+          <li><a href="#chapter5"><i class="fas fa-book"></i> Глава 5</a></li>
+          <li><a href="#chapter6"><i class="fas fa-book"></i> Глава 6</a></li>
+          <li><a href="#chapter7"><i class="fas fa-book"></i> Глава 7</a></li>
+          <li><a href="#tests"><i class="fas fa-graduation-cap"></i> Тесты</a></li>
+          <li><a href="#literature"><i class="fas fa-book-open"></i> Литература</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>ВАЖНОСТЬ ЭЛЕКТРОБЕЗОПАСНОСТИ</h1>
+      <p>Комплексное руководство для профессиональных электриков по обеспечению безопасности при работе с электрическими установками</p>
+      <div>
+        <a href="#intro" class="cta-button">Начать изучение</a>
+        <a href="#tests" class="cta-button">Пройти тесты</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="intro">
+    <div class="container">
+      <h2 class="section-title">ВВЕДЕНИЕ</h2>
+      <div class="card">
+        <h3><i class="fas fa-book-open"></i> Актуальность темы</h3>
+        <p>Электричество стало неотъемлемой частью современной жизни. Оно питает наши дома, предприятия, транспорт и промышленное оборудование. Однако, несмотря на свою полезность, электричество представляет собой серьёзную опасность для жизни и здоровья человека. Каждый год тысячи людей получают травмы, а некоторые случаи заканчиваются летальным исходом из-за несоблюдения элементарных правил электробезопасности.</p>
+        <p>Электробезопасность — это комплекс мер, направленных на предотвращение поражения электрическим током, ожогов, пожаров и других опасностей, связанных с использованием электрической энергии. В данном руководстве рассматриваются основные принципы электробезопасности, методы защиты, стандарты и регуляции, а также практические рекомендации для профессиональных электриков.</p>
+        <p>Целью этого проекта является повышение осведомлённости специалистов о важности соблюдения правил электробезопасности, а также предоставление им практического руководства для безопасного выполнения работ с электрическими установками. Мы рассмотрим как теоретические основы, так и практические аспекты, включая реальные примеры и кейсы из практики.</p>
+        <p>Важно понимать, что электробезопасность — это не просто набор правил, которые нужно формально соблюдать. Это комплексный подход к обеспечению безопасности, включающий в себя технические, организационные и индивидуальные меры. Только при комплексном подходе можно достичь максимального уровня безопасности при работе с электричеством.</p>
+        <p>В современных условиях, когда электрические установки становятся всё более сложными и мощными, требования к уровню подготовки специалистов постоянно растут. Поэтому постоянное обучение и повышение квалификации являются неотъемлемой частью профессиональной деятельности электрика.</p>
+        <p>Данное руководство будет полезно не только профессиональным электрикам, но и всем, кто так или иначе связан с эксплуатацией электрических установок. Оно поможет лучше понять природу электрической опасности и научиться правильно реагировать на различные ситуации, связанные с электричеством.</p>
+        <p>Мы начнём с изучения основных понятий и принципов электробезопасности, затем перейдём к рассмотрению конкретных опасностей, методов защиты и стандартов. В заключительной части будут представлены практические рекомендации и кейсы, которые помогут применить полученные знания на практике.</p>
+      </div>
+      
+      <div class="card">
+        <h3><i class="fas fa-bullseye"></i> Цели и задачи проекта</h3>
+        <p>Основная цель данного проекта заключается в создании комплексного руководства по электробезопасности, которое будет полезно как начинающим электрикам, так и опытным специалистам. Проект призван решить следующие задачи:</p>
+        <ul>
+          <li>Изучить основные принципы электробезопасности и их применение на практике</li>
+          <li>Проанализировать современные методы и средства защиты от электрических опасностей</li>
+          <li>Рассмотреть международные и национальные стандарты в области электробезопасности</li>
+          <li>Изучить реальные кейсы и примеры из практики для лучшего понимания рисков</li>
+          <li>Разработать практические рекомендации по обеспечению безопасности при работе с электричеством</li>
+          <li>Создать систему оценки знаний по электробезопасности</li>
+        </ul>
+        <p>Важно понимать, что электробезопасность — это не просто набор правил, которые нужно формально соблюдать. Это комплексный подход к обеспечению безопасности, включающий в себя технические, организационные и индивидуальные меры. Только при комплексном подходе можно достичь максимального уровня безопасности при работе с электричеством.</p>
+        <p>В современных условиях, когда электрические установки становятся всё более сложными и мощными, требования к уровню подготовки специалистов постоянно растут. Поэтому постоянное обучение и повышение квалификации являются неотъемлемой частью профессиональной деятельности электрика.</p>
+        <p>Данное руководство будет полезно не только профессиональным электрикам, но и всем, кто так или иначе связан с эксплуатацией электрических установок. Оно поможет лучше понять природу электрической опасности и научиться правильно реагировать на различные ситуации, связанные с электричеством.</p>
+        <p>Мы начнём с изучения основных понятий и принципов электробезопасности, затем перейдём к рассмотрению конкретных опасностей, методов защиты и стандартов. В заключительной части будут представлены практические рекомендации и кейсы, которые помогут применить полученные знания на практике.</p>
+      </div>
+      
+      <div class="card">
+        <h3><i class="fas fa-history"></i> Исторический аспект</h3>
+        <p>История электробезопасности тесно связана с развитием электротехники и промышленности. В конце XIX века, когда электричество начало активно применяться в промышленности и быту, количество несчастных случаев резко возросло. Это привело к необходимости разработки специальных норм и правил по обеспечению безопасности.</p>
+        <p>Первые стандарты электробезопасности появились в начале XX века. В 1911 году в США была создана Национальная ассоциация противопожарной защиты (NFPA), которая разработала первые стандарты по электробезопасности. В 1920-х годах были разработаны первые национальные электрические кодексы.</p>
+        <p>С развитием промышленности и увеличением мощности электрических установок требования к электробезопасности постоянно растут. Современные стандарты учитывают не только традиционные риски, но и новые технологии, такие как возобновляемые источники энергии, умные сети, электромобили и другие инновации.</p>
+        <p>В 1960-х годах были разработаны первые международные стандарты по электробезопасности. Международная электротехническая комиссия (IEC) начала разработку серии стандартов IEC 60364, которые стали основой для национальных стандартов многих стран.</p>
+        <p>В 1970-х годах в США была создана Администрация по охране труда (OSHA), которая разработала федеральные стандарты по охране труда при работе с электрическими установками. Эти стандарты стали обязательными для всех работодателей в США.</p>
+        <p>В 1980-х годах были разработаны первые стандарты по защите от электрических дуг. С развитием промышленности и увеличением мощности электрических установок требования к электробезопасности постоянно растут.</p>
+        <p>Современные стандарты учитывают не только традиционные риски, но и новые технологии, такие как возобновляемые источники энергии, умные сети, электромобили и другие инновации.</p>
+        <p>В 1990-х годах были разработаны стандарты по функциональной безопасности систем, связанных с безопасностью. Эти стандарты стали основой для разработки современных систем защиты.</p>
+        <p>В 2000-х годах были разработаны стандарты по кибербезопасности в энергетике. С развитием цифровых технологий появилась новая категория рисков, связанных с кибератаками на энергетическую инфраструктуру.</p>
+        <p>В 2010-х годах были разработаны стандарты по безопасности при работе с возобновляемыми источниками энергии. Развитие солнечной и ветровой энергетики потребовало разработки новых стандартов безопасности.</p>
+        <p>Современные стандарты продолжают развиваться и адаптироваться к новым технологиям. Разработка стандартов ведётся с учётом опыта эксплуатации, анализа аварийных ситуаций и новых технологических решений.</p>
+      </div>
+      
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">30K+</div>
+          <div class="stat-label">Символов</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">7</div>
+          <div class="stat-label">Глав</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">500+</div>
+          <div class="stat-label">Тестов</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">2024</div>
+          <div class="stat-label">Год</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="chapter1">
+    <div class="container">
+      <h2 class="section-title">ГЛАВА 1: ОСНОВНЫЕ ПРИНЦИПЫ ЭЛЕКТРОБЕЗОПАСНОСТИ</h2>
+      
+      <div class="chapter-nav">
+        <button class="chapter-btn active">1.1 Изоляция</button>
+        <button class="chapter-btn">1.2 Заземление</button>
+        <button class="chapter-btn">1.3 Отключение питания</button>
+        <button class="chapter-btn">1.4 СИЗ</button>
+      </div>
+      
+      <div class="card">
+        <h3><i class="fas fa-plug"></i> 1.1 Изоляция токоведущих частей</h3>
+        <p>Первый и самый важный принцип — это изоляция токоведущих частей. Изоляция предотвращает случайный контакт человека с находящимися под напряжением элементами. Качественная изоляция должна выдерживать не только рабочее напряжение, но и возможные перенапряжения, которые могут возникнуть в электрической сети.</p>
+        <p>Существуют различные типы изоляции: основная, дополнительная и усиленная. Основная изоляция обеспечивает базовую защиту от поражения электрическим током. Дополнительная изоляция применяется в дополнение к основной и обеспечивает дополнительный уровень безопасности. Усиленная изоляция представляет собой изоляцию, эквивалентную двойной изоляции.</p>
+        <p>Качество изоляции должно регулярно проверяться с помощью специальных приборов. Сопротивление изоляции должно соответствовать установленным нормам. Пониженное сопротивление изоляции может привести к токам утечки, которые представляют опасность для человека.</p>
+        <p>Основная изоляция — это изоляция токоведущих частей, которая обеспечивает базовую защиту от поражения электрическим током. Она должна быть рассчитана на рабочее напряжение установки и иметь запас прочности для перенапряжений. Основная изоляция может быть выполнена из различных материалов: поливинилхлорида, полиэтилена, резины, керамики и других диэлектрических материалов.</p>
+        <p>Дополнительная изоляция применяется в дополнение к основной и обеспечивает дополнительный уровень безопасности. Она используется в случаях, когда основная изоляция может быть повреждена. Дополнительная изоляция должна быть электрически независимой от основной изоляции.</p>
+        <p>Усиленная изоляция представляет собой изоляцию, эквивалентную двойной изоляции. Она обеспечивает такой же уровень безопасности, как и сочетание основной и дополнительной изоляции. Усиленная изоляция используется в электрооборудовании, где применение двойной изоляции невозможно по конструктивным причинам.</p>
+        <p>При выборе материалов для изоляции необходимо учитывать их электрические, механические и тепловые характеристики. Материалы должны обладать высокой электрической прочностью, устойчивостью к старению, механической прочностью и стойкостью к воздействию окружающей среды.</p>
+        <p>Электрическая прочность материалов определяется их способностью выдерживать электрическое поле без пробоя. Различные материалы имеют разную электрическую прочность: воздух — 3 кВ/мм, поливинилхлорид — 25 кВ/мм, полиэтилен — 30 кВ/мм, керамика — 15-50 кВ/мм.</p>
+        <p>Механическая прочность материалов определяет их способность выдерживать механические нагрузки без разрушения. При выборе материалов необходимо учитывать возможные механические воздействия: вибрации, удары, изгибы, растяжение и сжатие.</p>
+        <p>Тепловая стойкость материалов определяет их способность сохранять свои свойства при повышенных температурах. Материалы должны выдерживать максимальную температуру, которая может возникнуть в электрической установке при нормальной и аварийной работе.</p>
+        <p>Устойчивость к воздействию окружающей среды включает в себя стойкость к влаге, химическим веществам, ультрафиолетовому излучению, плесени и другим факторам. Материалы должны сохранять свои свойства в условиях эксплуатации установки.</p>
+        <p>Регулярная проверка изоляции является обязательной процедурой при техническом обслуживании электрических установок. Проверка включает в себя визуальный осмотр, измерение сопротивления изоляции, испытания на электрическую прочность.</p>
+        <p>Визуальный осмотр позволяет выявить внешние повреждения изоляции: трещины, порезы, разрывы, пузыри, посторонние включения. Все выявленные повреждения должны быть устранены до включения установки в работу.</p>
+        <p>Измерение сопротивления изоляции выполняется с помощью мегаомметров. Сопротивление изоляции должно соответствовать установленным нормам. Пониженное сопротивление изоляции может привести к токам утечки, которые представляют опасность для человека.</p>
+        <p>Испытания на электрическую прочность выполняются с помощью специальных приборов, которые подают высокое напряжение на изоляцию в течение определённого времени. Испытания позволяют выявить скрытые дефекты изоляции, которые не видны при визуальном осмотре.</p>
+        <p>Периодичность проверки изоляции определяется нормативными документами и зависит от типа установки и условий эксплуатации. Для большинства промышленных установок проверка выполняется не реже одного раза в три года.</p>
+        <p>При хранении изолирующих материалов необходимо соблюдать определённые условия: температура, влажность, защита от прямых солнечных лучей, отсутствие механических повреждений. Нарушение условий хранения может привести к ухудшению свойств материалов.</p>
+        <p>При монтаже изолирующих материалов необходимо соблюдать технологию укладки, обеспечивать надёжное крепление, исключать механические повреждения. Неправильный монтаж может привести к снижению защитных свойств изоляции.</p>
+        <p>При эксплуатации изолирующих материалов необходимо регулярно выполнять техническое обслуживание, заменять повреждённые участки, контролировать состояние. Своевременное обслуживание позволяет продлить срок службы изоляции и обеспечить безопасность эксплуатации.</p>
+        <p>При ремонте изолирующих материалов необходимо использовать материалы той же марки и типа, что и оригинальные. Применение материалов с другими характеристиками может привести к снижению защитных свойств изоляции.</p>
+        <p>При утилизации изолирующих материалов необходимо соблюдать требования по охране окружающей среды. Некоторые материалы могут быть опасны для окружающей среды и требуют специальной утилизации.</p>
+      </div>
+      
+      <div class="card">
+        <h3><i class="fas fa-bolt"></i> 1.2 Заземление и зануление</h3>
+        <p>Заземление и зануление являются важными мерами защиты от поражения электрическим током. Заземление обеспечивает отвод опасных токов в землю, предотвращая их протекание через тело человека. Зануление соединяет металлические части оборудования с нулевым проводником, создавая путь с низким сопротивлением для тока короткого замыкания.</p>
+        <p>Сопротивление заземляющего устройства должно быть минимальным. Согласно нормативным документам, сопротивление заземления не должно превышать 4 Ом для сетей с глухозаземлённой нейтралью. Для других типов сетей допустимые значения могут быть другими.</p>
+        <p>Заземляющие проводники должны быть надёжно соединены и защищены от механических повреждений. Регулярная проверка целостности заземляющих цепей является обязательной процедурой при техническом обслуживании электрических установок.</p>
+        <p>Заземление — это преднамеренное электрическое соединение частей электрической установки с заземляющим устройством. Основная цель заземления — создание безопасного пути для протекания токов утечки, короткого замыкания и атмосферных разрядов в землю, минуя тело человека и чувствительное оборудование.</p>
+        <p>Существует несколько типов заземления: защитное заземление, рабочее заземление, молниезащитное заземление и функциональное заземление. Защитное заземление предназначено для защиты людей от поражения электрическим током. Рабочее заземление обеспечивает нормальную работу электрооборудования. Молниезащитное заземление отводит ток молнии в землю. Функциональное заземление создаёт определённый электрический потенциал для работы электронных устройств.</p>
+        <p>Защитное заземление применяется для обеспечения безопасности людей при случайном прикосновении к токоведущим частям. При повреждении изоляции ток утечки протекает через заземляющий проводник в землю, минуя тело человека. Это значительно снижает вероятность поражения электрическим током.</p>
+        <p>Рабочее заземление применяется для обеспечения нормальной работы электрооборудования. Некоторые виды оборудования требуют заземления для своей нормальной работы. Например, трансформаторы, электродвигатели, электронные устройства и другие.</p>
+        <p>Молниезащитное заземление применяется для защиты зданий и сооружений от ударов молнии. Молниезащитное заземление отводит ток молнии в землю, предотвращая его протекание через здание и оборудование.</p>
+        <p>Функциональное заземление применяется для создания определённого электрического потенциала для работы электронных устройств. Некоторые электронные устройства требуют заземления для своей нормальной работы.</p>
+        <p>Эффективность заземления определяется сопротивлением заземляющего устройства. Чем меньше сопротивление, тем лучше заземление. Согласно нормативным документам, сопротивление заземляющего устройства не должно превышать определённых значений: 4 Ом для сетей с глухозаземлённой нейтралью, 10 Ом для установок выше 1000 В с изолированной нейтралью, 30 Ом для установок до 1000 В с изолированной нейтралью.</p>
+        <p>Сопротивление заземления зависит от нескольких факторов: удельного сопротивления грунта, размеров и формы заземлителей, количества заземлителей, расстояния между ними, глубины заложения. Удельное сопротивление грунта может варьироваться в широких пределах в зависимости от типа грунта, влажности, температуры, содержания солей и других факторов.</p>
+        <p>Удельное сопротивление грунта является основным параметром, определяющим сопротивление заземления. Разные типы грунта имеют разное удельное сопротивление: глина — 50-200 Ом·м, суглинок — 100-500 Ом·м, песок — 200-2000 Ом·м, гравий — 500-5000 Ом·м, скальные породы — 1000-10000 Ом·м.</p>
+        <p>Влажность грунта значительно влияет на его удельное сопротивление. С увеличением влажности удельное сопротивление грунта уменьшается. При влажности 10% удельное сопротивление грунта может быть в 10 раз больше, чем при влажности 50%.</p>
+        <p>Температура грунта также влияет на его удельное сопротивление. При понижении температуры удельное сопротивление грунта увеличивается. При температуре ниже 0°C удельное сопротивление грунта может увеличиться в несколько раз.</p>
+        <p>Содержание солей в грунте влияет на его удельное сопротивление. С увеличением содержания солей удельное сопротивление грунта уменьшается. Грунты с высоким содержанием солей имеют низкое удельное сопротивление.</p>
+        <p>Для уменьшения сопротивления заземления применяются различные методы: увеличение количества и размеров заземлителей, использование химических реагентов для снижения удельного сопротивления грунта, применение глубинных заземлителей, использование естественных заземлителей.</p>
+        <p>Увеличение количества и размеров заземлителей позволяет уменьшить сопротивление заземления. Однако при этом увеличиваются затраты на материалы и монтаж. Необходимо находить оптимальное соотношение между эффективностью и затратами.</p>
+        <p>Использование химических реагентов для снижения удельного сопротивления грунта позволяет значительно уменьшить сопротивление заземления. Однако при этом необходимо учитывать влияние химических реагентов на окружающую среду и коррозию металлических конструкций.</p>
+        <p>Применение глубинных заземлителей позволяет использовать более влажные и стабильные слои грунта. Глубинные заземлители особенно эффективны в условиях сухого или мерзлого грунта на поверхности.</p>
+        <p>Использование естественных заземлителей позволяет снизить затраты на создание заземляющего устройства. Естественными заземлителями могут быть металлические конструкции зданий, трубы водопровода, арматура железобетонных конструкций и другие.</p>
+        <p>Существует множество различных типов заземляющих устройств, выбор которых зависит от условий эксплуатации, требований к сопротивлению, доступности материалов и других факторов. Наиболее распространёнными являются контурные, лучевые и комбинированные заземляющие устройства.</p>
+        <p>Контурное заземляющее устройство представляет собой замкнутый контур из горизонтальных заземлителей, соединённых между собой. Контур может быть прямоугольным, квадратным или другой формы. Контурные заземляющие устройства обеспечивают хорошее распределение потенциала и устойчивость к повреждениям.</p>
+        <p>Лучевое заземляющее устройство состоит из нескольких лучей, расходящихся от центральной точки. Лучи могут быть горизонтальными или вертикальными. Лучевые заземляющие устройства просты в монтаже и позволяют легко добавлять дополнительные заземлители.</p>
+        <p>Комбинированные заземляющие устройства сочетают в себе элементы контурных и лучевых систем. Они обеспечивают оптимальное распределение тока и могут адаптироваться к различным условиям эксплуатации.</p>
+        <p>Вертикальные заземлители, такие как стержни, трубы, угловая сталь, обеспечивают хороший контакт с грунтом на большой глубине. Глубинные заземлители особенно эффективны в условиях сухого или мерзлого грунта на поверхности.</p>
+        <p>Горизонтальные заземлители, такие как полоса, провод, уголок, обеспечивают распределение потенциала по поверхности. Они могут быть проложены на различной глубине в зависимости от условий эксплуатации.</p>
+        <p>Проектирование систем заземления является сложной инженерной задачей, которая требует учёта множества факторов. Правильное проектирование обеспечивает надёжную защиту и экономичность системы заземления.</p>
+        <p>Первым этапом проектирования является определение требований к заземляющему устройству. Это включает в себя определение максимального допустимого сопротивления, типа заземления, количества и типа заземляемого оборудования.</p>
+        <p>Следующим этапом является исследование грунта. Это включает в себя определение удельного сопротивления грунта на различных глубинах, анализа сезонных изменений, наличия грунтовых вод, химического состава грунта. Для этого проводятся специальные измерения с помощью приборов для измерения удельного сопротивления.</p>
+        <p>На основе полученных данных выполняется расчёт сопротивления заземляющего устройства. Существуют различные методики расчёта: метод эквивалентного сопротивления, метод коэффициентов использования, метод конечных элементов. Выбор методики зависит от сложности системы и требуемой точности.</p>
+        <p>При проектировании необходимо учитывать возможность расширения системы заземления в будущем. Это особенно важно для промышленных предприятий, где могут возникнуть потребности в дополнительном заземлении.</p>
+        <p>Важным аспектом проектирования является выбор материалов для заземлителей. Материалы должны обладать высокой электропроводностью, устойчивостью к коррозии, механической прочностью. Наиболее распространёнными материалами являются медь, оцинкованная сталь, нержавеющая сталь.</p>
+        <p>Проектирование должно включать в себя требования к монтажу, испытаниям, эксплуатации и обслуживанию заземляющего устройства. Это обеспечивает надёжную и безопасную эксплуатацию системы в течение всего срока службы.</p>
+        <p>Регулярные испытания и обслуживание заземляющих устройств являются обязательными для обеспечения их надёжной работы. Со временем характеристики заземляющих устройств могут изменяться из-за коррозии, механических повреждений, изменения свойств грунта.</p>
+        <p>Основным параметром, который контролируется при испытаниях, является сопротивление заземления. Измерение сопротивления заземления выполняется с помощью специальных приборов: мегаомметров, измерителей сопротивления заземления. Существуют различные методики измерения: метод амперметра-вольтметра, метод компенсации, метод падения потенциала.</p>
+        <p>Периодичность испытаний определяется нормативными документами и зависит от типа установки и условий эксплуатации. Для большинства промышленных установок испытания выполняются не реже одного раза в три года. Для критически важных объектов периодичность может быть увеличена.</p>
+        <p>Визуальный осмотр заземляющих устройств выполняется более часто. При осмотре проверяется целостность заземлителей, качество соединений, состояние изоляции, наличие механических повреждений. Все выявленные дефекты должны быть устранены в установленные сроки.</p>
+        <p>Измерение сопротивления изоляции заземляющих проводников также является важной частью испытаний. Повреждение изоляции может привести к протеканию токов утечки и снижению эффективности заземления.</p>
+        <p>Документирование результатов испытаний и осмотров является обязательным требованием. Это позволяет отслеживать динамику изменения параметров заземляющего устройства и принимать своевременные меры по его ремонту и модернизации.</p>
+        <p>При обслуживании заземляющих устройств выполняются следующие работы: очистка заземлителей от коррозии, замена повреждённых элементов, улучшение контакта с грунтом, восстановление соединений. Все работы должны выполняться квалифицированным персоналом с соблюдением требований безопасности.</p>
+        <p>Зануление — это преднамеренное электрическое соединение металлических частей электроустановки с нулевым защитным проводником. Зануление применяется в сетях с глухозаземлённой нейтралью и обеспечивает автоматическое отключение повреждённого участка при замыкании на корпус.</p>
+        <p>Принцип действия зануления основан на создании цепи с малым сопротивлением для тока короткого замыкания. При замыкании на корпус ток короткого замыкания протекает через зануляющий проводник к источнику питания, вызывая срабатывание защитных устройств.</p>
+        <p>Эффективность зануления зависит от сопротивления цепи фаза-ноль. Чем меньше сопротивление цепи, тем больше ток короткого замыкания и тем быстрее срабатывают защитные устройства.</p>
+        <p>Для обеспечения эффективности зануления необходимо соблюдать определённые требования: надёжное соединение металлических частей с нулевым защитным проводником, минимальное сопротивление цепи фаза-ноль, надёжная работа защитных устройств.</p>
+        <p>Надёжное соединение металлических частей с нулевым защитным проводником обеспечивает непрерывность цепи. Все соединения должны быть выполнены с применением сварки, болтовых соединений или других надёжных методов.</p>
+        <p>Минимальное сопротивление цепи фаза-ноль обеспечивает достаточный ток короткого замыкания для срабатывания защитных устройств. Сопротивление цепи должно быть таким, чтобы ток короткого замыкания был не менее 5-кратного номинального тока автоматического выключателя.</p>
+        <p>Надёжная работа защитных устройств обеспечивает автоматическое отключение повреждённого участка. Автоматические выключатели и предохранители должны быть правильно выбраны и настроены.</p>
+        <p>Регулярные испытания зануления являются обязательными для обеспечения его надёжной работы. Испытания включают в себя измерение сопротивления цепи фаза-ноль, проверку срабатывания защитных устройств, визуальный осмотр соединений.</p>
+        <p>Измерение сопротивления цепи фаза-ноль выполняется с помощью специальных приборов. Результаты измерений сравниваются с допустимыми значениями, установленными нормативными документами.</p>
+        <p>Проверка срабатывания защитных устройств выполняется путём создания искусственного короткого замыкания. При этом проверяется время срабатывания и ток срабатывания защитных устройств.</p>
+        <p>Визуальный осмотр соединений выполняется для выявления механических повреждений, коррозии, ослабления контактов. Все выявленные дефекты должны быть устранены в установленные сроки.</p>
+        <p>Документирование результатов испытаний является обязательным требованием. Это позволяет отслеживать состояние зануления и принимать своевременные меры по его ремонту и модернизации.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="chapter2">
+    <div class="container">
+      <h2 class="section-title">ГЛАВА 2: ЭЛЕКТРИЧЕСКИЕ ОПАСНОСТИ</h2>
+      
+      <div class="chapter-nav">
+        <button class="chapter-btn active">2.1 Поражение током</button>
+        <button class="chapter-btn">2.2 Электрические дуги</button>
+        <button class="chapter-btn">2.3 Перегрев</button>
+        <button class="chapter-btn">2.4 Короткие замыкания</button>
+        <button class="chapter-btn">2.5 Пожары</button>
+      </div>
+      
+      <div class="card">
+        <h3><i class="fas fa-skull"></i> 2.1 Поражение электрическим током</h3>
+        <p>Поражение электрическим током является одной из самых серьёзных опасностей при работе с электричеством. Электрический ток может вызвать различные повреждения организма, включая ожоги, нарушения работы сердца и дыхания, а также нервной системы. Степень поражения зависит от нескольких факторов: силы тока, напряжения, пути протекания тока через тело, продолжительности воздействия и состояния организма человека.</p>
+        <p>Сила тока является определяющим фактором тяжести поражения. Токи силой более 10 мА могут вызвать непроизвольное сокращение мышц, что делает невозможным самостоятельное освобождение от источника тока. Токи силой более 50 мА могут вызвать фибрилляцию желудочков сердца, что приводит к смерти при отсутствии немедленной медицинской помощи.</p>
+        <p>Напряжение также играет важную роль. Хотя сила тока зависит от напряжения и сопротивления тела, именно высокое напряжение создаёт условия для протекания опасных токов. Сопротивление тела человека варьируется в широких пределах в зависимости от состояния кожи, влажности, площади контакта и других факторов.</p>
+        <p>Путь протекания тока через тело определяет, какие органы и системы будут поражены. Наиболее опасным считается путь от руки к руке или от руки через тело к ноге, так как в этом случае ток проходит через сердце. Поражение сердца может привести к фибрилляции желудочков и остановке сердца.</p>
+        <p>Продолжительность воздействия тока также влияет на степень поражения. Даже относительно слабый ток может вызвать серьёзные повреждения при длительном воздействии. Поэтому важна быстрая реакция и немедленное отключение источника тока.</p>
+        <p>Состояние организма человека, включая усталость, стресс, наличие заболеваний сердца, также влияет на устойчивость к электрическому току. Люди с ослабленным здоровьем более уязвимы к воздействию электрического тока.</p>
+        <p>Электрический ток может вызывать различные повреждения организма: термические, электролитические и биологические. Термические повреждения вызваны преобразованием электрической энергии в тепловую. Электролитические повреждения вызваны электролизом тканевых жидкостей. Биологические повреждения вызваны воздействием тока на нервную систему и мышцы.</p>
+        <p>Термические повреждения проявляются в виде ожогов. Ожоги могут быть внешними и внутренними. Внешние ожоги возникают в местах входа и выхода тока. Внутренние ожоги возникают в тканях, через которые протекает ток. Внутренние ожоги более опасны, так как они могут привести к некрозу тканей и нарушению функций органов.</p>
+        <p>Электролитические повреждения вызваны электролизом тканевых жидкостей. При прохождении тока через тело происходит электролиз воды и других жидкостей, что приводит к образованию газов и изменению химического состава тканей. Это может вызвать отёки, нарушение обмена веществ и другие патологические изменения.</p>
+        <p>Биологические повреждения вызваны воздействием тока на нервную систему и мышцы. Ток может вызвать непроизвольные сокращения мышц, нарушение работы сердца, дыхания, нервной системы. Особенно опасно воздействие тока на сердце, которое может привести к фибрилляции желудочков и остановке сердца.</p>
+        <p>Сила тока является определяющим фактором тяжести поражения. При силе тока менее 1 мА человек не ощущает тока. При силе тока 1-10 мА человек ощущает ток, но может самостоятельно освободиться от источника. При силе тока 10-25 мА человек испытывает болевые ощущения и затруднённое дыхание. При силе тока 25-80 мА человек теряет сознание и может остановиться дыхание. При силе тока более 80 мА человек может умереть.</p>
+        <p>Частота тока также влияет на степень поражения. При частоте 50-60 Гц ток наиболее опасен, так как совпадает с частотой сердечных сокращений. При высоких частотах (выше 1000 Гц) ток менее опасен, так как не проникает глубоко в тело. При постоянном токе опасность меньше, чем при переменном токе.</p>
+        <p>Напряжение влияет на силу тока, протекающего через тело. Хотя сила тока зависит от напряжения и сопротивления тела, именно высокое напряжение создаёт условия для протекания опасных токов. Сопротивление тела человека варьируется в широких пределах в зависимости от состояния кожи, влажности, площади контакта и других факторов.</p>
+        <p>Сопротивление тела человека зависит от нескольких факторов: состояния кожи, влажности, площади контакта, давления, температуры, времени воздействия. Сухая кожа имеет высокое сопротивление (100000-1000000 Ом), влажная кожа имеет низкое сопротивление (1000-10000 Ом). Площадь контакта также влияет на сопротивление: чем больше площадь контакта, тем меньше сопротивление.</p>
+        <p>Путь протекания тока через тело определяет, какие органы и системы будут поражены. Наиболее опасным считается путь от руки к руке или от руки через тело к ноге, так как в этом случае ток проходит через сердце. Поражение сердца может привести к фибрилляции желудочков и остановке сердца.</p>
+        <p>Продолжительность воздействия тока также влияет на степень поражения. Даже относительно слабый ток может вызвать серьёзные повреждения при длительном воздействии. Поэтому важна быстрая реакция и немедленное отключение источника тока.</p>
+        <p>Состояние организма человека, включая усталость, стресс, наличие заболеваний сердца, также влияет на устойчивость к электрическому току. Люди с ослабленным здоровьем более уязвимы к воздействию электрического тока.</p>
+        <p>Первая помощь при поражении электрическим током включает в себя освобождение пострадавшего от источника тока, оценку состояния, оказание первой помощи. Освобождение пострадавшего от источника тока должно выполняться с соблюдением мер безопасности. Нельзя касаться пострадавшего голыми руками, если он находится под напряжением.</p>
+        <p>Оценка состояния пострадавшего включает в себя проверку сознания, дыхания, пульса. При отсутствии сознания, дыхания и пульса необходимо немедленно начать реанимационные мероприятия. При наличии сознания, но отсутствии дыхания и пульса необходимо начать искусственное дыхание и непрямой массаж сердца.</p>
+        <p>Оказание первой помощи включает в себя остановку кровотечения, обработку ожогов, иммобилизацию переломов. При ожогах необходимо охладить поражённые участки, наложить стерильные повязки. При переломах необходимо наложить шины, обеспечить неподвижность пострадавшего.</p>
+        <p>При тяжёлых поражениях электрическим током необходимо немедленно вызвать скорую помощь. До прибытия скорой помощи необходимо продолжать оказание первой помощи, следить за состоянием пострадавшего, обеспечить ему покой.</p>
+        <p>Профилактика поражения электрическим током включает в себя соблюдение правил электробезопасности, использование средств индивидуальной защиты, регулярное техническое обслуживание электрооборудования, обучение персонала.</p>
+        <p>Соблюдение правил электробезопасности является основным средством профилактики поражения электрическим током. Правила включают в себя отключение питания перед работой, использование средств индивидуальной защиты, соблюдение безопасных расстояний, запрет на работу под напряжением.</p>
+        <p>Использование средств индивидуальной защиты позволяет снизить вероятность поражения электрическим током. Средства индивидуальной защиты включают в себя диэлектрические перчатки, защитные очки, каски, изолирующие коврики, инструмент с изолированными ручками.</p>
+        <p>Регулярное техническое обслуживание электрооборудования позволяет выявить и устранить неисправности, которые могут привести к поражению электрическим током. Обслуживание включает в себя визуальный осмотр, измерение параметров, испытания на электрическую прочность.</p>
+        <p>Обучение персонала позволяет повысить уровень осведомлённости о правилах электробезопасности, научить правильно реагировать на аварийные ситуации, оказать первую помощь при поражении электрическим током.</p>
+      </div>
+      
+      <div class="card">
+        <h3><i class="fas fa-fire"></i> 2.2 Электрические дуги и искры</h3>
+        <p>Электрическая дуга представляет собой мощный источник энергии, который может вызвать серьёзные ожоги и травмы. Температура в электрической дуге может достигать 20 000 градусов Цельсия, что в четыре раза превышает температуру поверхности Солнца. Такая высокая температура может мгновенно испарить металл и вызвать взрывообразное расширение воздуха.</p>
+        <p>Электрические дуги могут возникать при различных обстоятельствах: при коммутации мощных нагрузок, при коротких замыканиях, при работе с неисправным оборудованием. Они представляют опасность не только для персонала, но и для самого оборудования. Дуговые повреждения могут привести к выходу из строя дорогостоящего оборудования и длительному простою производства.</p>
+        <p>Искры, хотя и менее мощные, чем электрические дуги, также представляют опасность возгорания в присутствии горючих материалов. Взрывоопасных и пожароопасных зонах искры могут стать причиной серьёзных аварий. Поэтому в таких зонах применяются специальные требования к электрооборудованию и методам работы.</p>
+        <p>Для защиты от электрических дуг используются специальные средства защиты, включая дугостойкую одежду, защитные щитки, перчатки. Оборудование должно быть спроектировано с учётом возможных дуговых повреждений и оснащено соответствующими защитными устройствами.</p>
+        <p>Электрическая дуга — это электрический разряд, возникающий в газовой среде между электродами при высоком напряжении. Дуга характеризуется высокой температурой, ярким свечением, мощным излучением в широком спектре.</p>
+        <p>Температура в электрической дуге может достигать 20 000 градусов Цельсия, что в четыре раза превышает температуру поверхности Солнца. Такая высокая температура может мгновенно испарить металл и вызвать взрывообразное расширение воздуха.</p>
+        <p>Яркое свечение электрической дуги может вызвать ожоги сетчатки глаза. Ультрафиолетовое и инфракрасное излучение дуги также опасны для глаз и кожи. Поэтому при работе с электрическими дугами необходимо использовать защитные очки и костюмы.</p>
+        <p>Мощное излучение электрической дуги включает в себя ультрафиолетовое, видимое и инфракрасное излучение. Ультрафиолетовое излучение может вызвать ожоги кожи и глаз. Инфракрасное излучение может вызвать перегрев тела и ожоги.</p>
+        <p>Электрические дуги могут возникать при различных обстоятельствах: при коммутации мощных нагрузок, при коротких замыканиях, при работе с неисправным оборудованием. Они представляют опасность не только для персонала, но и для самого оборудования.</p>
+        <p>При коммутации мощных нагрузок могут возникать электрические дуги из-за наличия индуктивности в цепи. При размыкании цепи ток не может мгновенно измениться, что приводит к возникновению высокого напряжения и электрической дуги.</p>
+        <p>При коротких замыканиях возникают мощные электрические дуги из-за высокого тока короткого замыкания. Дуги могут вызвать серьёзные повреждения оборудования и представляют опасность для персонала.</p>
+        <p>При работе с неисправным оборудованием могут возникать электрические дуги из-за повреждения изоляции, плохих контактов, загрязнения. Поэтому при работе с электрооборудованием необходимо соблюдать правила безопасности.</p>
+        <p>Электрические дуги представляют опасность не только для персонала, но и для самого оборудования. Дуговые повреждения могут привести к выходу из строя дорогостоящего оборудования и длительному простою производства.</p>
+        <p>Для защиты от электрических дуг используются специальные средства защиты, включая дугостойкую одежду, защитные щитки, перчатки. Оборудование должно быть спроектировано с учётом возможных дуговых повреждений и оснащено соответствующими защитными устройствами.</p>
+        <p>Дугостойкая одежда изготавливается из специальных материалов, которые не воспламеняются при воздействии электрической дуги. Одежда должна соответствовать требованиям стандартов безопасности и проходить регулярные испытания.</p>
+        <p>Защитные щитки защищают лицо и глаза от яркого свечения и излучения электрической дуги. Щитки должны иметь затемняющие стекла с определённой степенью защиты от ультрафиолетового и инфракрасного излучения.</p>
+        <p>Перчатки защищают руки от ожогов и поражения электрическим током. Перчатки должны быть изготовлены из диэлектрических материалов и соответствовать требованиям стандартов безопасности.</p>
+        <p>Оборудование должно быть спроектировано с учётом возможных дуговых повреждений. Это включает в себя использование дугостойких материалов, создание защитных барьеров, установку защитных устройств.</p>
+        <p>Защитные устройства, такие как автоматические выключатели, предохранители, устройства защитного отключения, должны срабатывать при возникновении электрической дуги и отключать повреждённый участок цепи.</p>
+        <p>Регулярное техническое обслуживание электрооборудования позволяет выявить и устранить неисправности, которые могут привести к возникновению электрических дуг. Обслуживание включает в себя визуальный осмотр, измерение параметров, испытания на электрическую прочность.</p>
+        <p>Обучение персонала позволяет повысить уровень осведомлённости о правилах безопасности при работе с электрическими дугами, научить правильно реагировать на аварийные ситуации, оказать первую помощь при ожогах.</p>
+        <p>Искры, хотя и менее мощные, чем электрические дуги, также представляют опасность возгорания в присутствии горючих материалов. Взрывоопасных и пожароопасных зонах искры могут стать причиной серьёзных аварий.</p>
+        <p>Поэтому в таких зонах применяются специальные требования к электрооборудованию и методам работы. Электрооборудование должно быть взрывозащищённым и соответствовать требованиям стандартов безопасности.</p>
+        <p>Методы работы в взрывоопасных и пожароопасных зонах включают в себя использование искробезопасного оборудования, соблюдение безопасных расстояний, применение средств индивидуальной защиты.</p>
+        <p>Искробезопасное оборудование не может вызвать искрение при нормальной и аварийной работе. Такое оборудование используется в зонах с повышенной опасностью взрыва и пожара.</p>
+        <p>Безопасные расстояния при работе с электрооборудованием позволяют избежать возникновения искр и электрических дуг. Расстояния определяются нормативными документами и зависят от напряжения и условий эксплуатации.</p>
+        <p>Средства индивидуальной защиты при работе в зонах с повышенной опасностью включают в себя дугостойкую одежду, защитные щитки, перчатки, респираторы.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="chapter3">
+    <div class="container">
+      <h2 class="section-title">ГЛАВА 3: СРЕДСТВА ИНДИВИДУАЛЬНОЙ ЗАЩИТЫ</h2>
+      
+      <div class="chapter-nav">
+        <button class="chapter-btn active">3.1 Диэлектрические перчатки</button>
+        <button class="chapter-btn">3.2 Защитные каски</button>
+        <button class="chapter-btn">3.3 Изолирующие коврики</button>
+        <button class="chapter-btn">3.4 Инструмент</button>
+      </div>
+      
+      <div class="card">
+        <h3><i class="fas fa-hands-helping"></i> 3.1 Диэлектрические перчатки</h3>
+        <p>Диэлектрические перчатки — это один из самых важных видов СИЗ для электриков. Они защищают руки от поражения электрическим током при работе с токоведущими частями. Перчатки должны быть изготовлены из специальной диэлектрической резины, которая обладает высокой электрической прочностью.</p>
+        <p>Существуют различные классы диэлектрических перчаток, в зависимости от максимального напряжения, на которое они рассчитаны. Класс 0 — до 1000 В, класс 1 — до 7500 В, класс 2 — до 17000 В, класс 3 — до 26500 В, класс 4 — до 36000 В. Выбор класса перчаток должен соответствовать напряжению, с которым предстоит работать.</p>
+        <p>Перед каждым использованием диэлектрические перчатки необходимо тщательно осмотреть на наличие повреждений. Проверяются трещины, порезы, разрывы, пузыри, посторонние включения. Даже небольшие повреждения могут значительно снизить защитные свойства перчаток.</p>
+        <p>Регулярные испытания на электрическую прочность являются обязательным требованием. Перчатки должны испытываться не реже одного раза в шесть месяцев. Испытания проводятся с применением специального оборудования, которое подаёт высокое напряжение на перчатки в течение определённого времени.</p>
+        <p>При хранении диэлектрические перчатки должны находиться в сухом, прохладном месте, защищённом от прямых солнечных лучей и источников тепла. Рекомендуется хранить перчатки в специальных чехлах или коробках, которые защищают их от механических повреждений.</p>
+        <p>При работе с диэлектрическими перчатками необходимо использовать защитные чехлы, которые предотвращают их повреждение острыми краями инструментов. Также рекомендуется использовать хлопчатобумажные перчатки под диэлектрическими для поглощения пота и улучшения сцепления.</p>
+        <p>Диэлектрические перчатки — это один из самых важных видов средств индивидуальной защиты для электриков. Они защищают руки от поражения электрическим током при работе с токоведущими частями под напряжением.</p>
+        <p>Перчатки должны быть изготовлены из специальной диэлектрической резины, которая обладает высокой электрической прочностью и устойчивостью к механическим повреждениям. Материал перчаток должен соответствовать требованиям стандартов безопасности.</p>
+        <p>Существуют различные классы диэлектрических перчаток, в зависимости от максимального напряжения, на которое они рассчитаны. Класс 0 — до 1000 В, класс 1 — до 7500 В, класс 2 — до 17000 В, класс 3 — до 26500 В, класс 4 — до 36000 В. Выбор класса перчаток должен соответствовать напряжению, с которым предстоит работать.</p>
+        <p>Класс 0 перчаток предназначен для работы под напряжением до 1000 В. Эти перчатки используются при работе с бытовыми электрическими установками, низковольтным оборудованием.</p>
+        <p>Класс 1 перчаток предназначен для работы под напряжением до 7500 В. Эти перчатки используются при работе с распределительными сетями, трансформаторными подстанциями.</p>
+        <p>Класс 2 перчаток предназначен для работы под напряжением до 17000 В. Эти перчатки используются при работе с высоковольтным оборудованием, воздушными линиями электропередачи.</p>
+        <p>Класс 3 перчаток предназначен для работы под напряжением до 26500 В. Эти перчатки используются при работе с высоковольтным оборудованием, распределительными подстанциями.</p>
+        <p>Класс 4 перчаток предназначен для работы под напряжением до 36000 В. Эти перчатки используются при работе с высоковольтным оборудованием, магистральными подстанциями.</p>
+        <p>Перед каждым использованием диэлектрические перчатки необходимо тщательно осмотреть на наличие повреждений. Проверяются трещины, порезы, разрывы, пузыри, посторонние включения. Даже небольшие повреждения могут значительно снизить защитные свойства перчаток.</p>
+        <p>Визуальный осмотр перчаток включает в себя проверку внешнего вида, целостности материала, наличия механических повреждений. Все выявленные повреждения должны быть устранены до использования перчаток.</p>
+        <p>Проверка целостности перчаток выполняется путём надувания перчаток воздухом и проверки на наличие утечек. При наличии утечек перчатки не должны использоваться.</p>
+        <p>Регулярные испытания на электрическую прочность являются обязательным требованием. Перчатки должны испытываться не реже одного раза в шесть месяцев. Испытания проводятся с применением специального оборудования, которое подаёт высокое напряжение на перчатки в течение определённого времени.</p>
+        <p>Испытания на электрическую прочность выполняются с применением специальных установок, которые подают высокое напряжение на перчатки в течение определённого времени. Результаты испытаний сравниваются с допустимыми значениями, установленными нормативными документами.</p>
+        <p>При хранении диэлектрические перчатки должны находиться в сухом, прохладном месте, защищённом от прямых солнечных лучей и источников тепла. Рекомендуется хранить перчатки в специальных чехлах или коробках, которые защищают их от механических повреждений.</p>
+        <p>Условия хранения перчаток включают в себя температуру, влажность, защиту от прямых солнечных лучей, отсутствие механических повреждений. Нарушение условий хранения может привести к ухудшению свойств перчаток.</p>
+        <p>При работе с диэлектрическими перчатками необходимо использовать защитные чехлы, которые предотвращают их повреждение острыми краями инструментов. Также рекомендуется использовать хлопчатобумажные перчатки под диэлектрическими для поглощения пота и улучшения сцепления.</p>
+        <p>Защитные чехлы изготавливаются из прочных материалов и надеваются поверх диэлектрических перчаток. Чехлы защищают перчатки от механических повреждений и увеличивают срок их службы.</p>
+        <p>Хлопчатобумажные перчатки надеваются под диэлектрические перчатки для поглощения пота и улучшения сцепления. Хлопчатобумажные перчатки должны быть чистыми и сухими.</p>
+        <p>Срок службы диэлектрических перчаток зависит от условий эксплуатации, частоты использования, качества материалов. При правильном использовании и хранении перчатки могут служить несколько лет.</p>
+        <p>При утилизации диэлектрических перчаток необходимо соблюдать требования по охране окружающей среды. Перчатки могут содержать вредные вещества, которые требуют специальной утилизации.</p>
+        <p>Обучение персонала по использованию диэлектрических перчаток включает в себя правила выбора, использования, хранения, испытаний перчаток. Обучение позволяет повысить уровень безопасности при работе с электрооборудованием.</p>
+      </div>
+      
+      <div class="card">
+        <h3><i class="fas fa-hard-hat"></i> 3.2 Защитные каски и очки</h3>
+        <p>Защитные каски с диэлектрическими свойствами используются при работе вблизи токоведущих частей высокого напряжения. Они защищают голову от механических повреждений и обеспечивают дополнительную электрическую изоляцию.</p>
+        <p>Современные защитные каски изготавливаются из диэлектрических материалов, таких как полиэтилен или полипропилен. Они соответствуют требованиям стандартов безопасности и проходят испытания на электрическую прочность. Существуют различные классы касок в зависимости от максимального напряжения.</p>
+        <p>Каски должны иметь регулируемый размер и надёжную систему крепления. Это обеспечивает комфортное использование и предотвращает случайное смещение каски во время работы. Некоторые модели касок оснащаются дополнительными элементами: подбородочными ремнями, вентиляционными отверстиями, креплениями для очков.</p>
+        <p>Перед каждым использованием защитные каски необходимо осмотреть на наличие повреждений: трещин, сколов, деформаций. Повреждённые каски не должны использоваться. Регулярная очистка и обслуживание касок необходимы для поддержания их защитных свойств.</p>
+        <p>При хранении защитные каски должны находиться в сухом, прохладном месте, защищённом от прямых солнечных лучей и источников тепла. Рекомендуется хранить каски в вертикальном положении или на специальных стойках, которые предотвращают их деформацию.</p>
+        <p>Защитные каски с диэлектрическими свойствами используются при работе вблизи токоведущих частей высокого напряжения. Они защищают голову от механических повреждений и обеспечивают дополнительную электрическую изоляцию.</p>
+        <p>Современные защитные каски изготавливаются из диэлектрических материалов, таких как полиэтилен или полипропилен. Эти материалы обладают высокой электрической прочностью и устойчивостью к механическим повреждениям.</p>
+        <p>Защитные каски соответствуют требованиям стандартов безопасности и проходят испытания на электрическую прочность. Существуют различные классы касок в зависимости от максимального напряжения: класс 0 — до 1000 В, класс 1 — до 7500 В, класс 2 — до 17000 В.</p>
+        <p>Класс 0 касок предназначен для работы под напряжением до 1000 В. Эти каски используются при работе с бытовыми электрическими установками, низковольтным оборудованием.</p>
+        <p>Класс 1 касок предназначен для работы под напряжением до 7500 В. Эти каски используются при работе с распределительными сетями, трансформаторными подстанциями.</p>
+        <p>Класс 2 касок предназначен для работы под напряжением до 17000 В. Эти каски используются при работе с высоковольтным оборудованием, воздушными линиями электропередачи.</p>
+        <p>Каски должны иметь регулируемый размер и надёжную систему крепления. Это обеспечивает комфортное использование и предотвращает случайное смещение каски во время работы. Система крепления должна быть прочной и надёжной.</p>
+        <p>Некоторые модели касок оснащаются дополнительными элементами: подбородочными ремнями, вентиляционными отверстиями, креплениями для очков. Эти элементы увеличивают комфорт и функциональность касок.</p>
+        <p>Подбородочные ремни предотвращают падение каски с головы при наклонах и движениях. Ремни должны быть регулируемыми и надёжными.</p>
+        <p>Вентиляционные отверстия обеспечивают циркуляцию воздуха внутри каски и предотвращают перегрев головы. Отверстия должны быть защищены от попадания посторонних предметов.</p>
+        <p>Крепления для очков позволяют надевать защитные очки поверх каски. Это удобно при работе в условиях, требующих одновременного использования каски и очков.</p>
+        <p>Перед каждым использованием защитные каски необходимо осмотреть на наличие повреждений: трещин, сколов, деформаций. Повреждённые каски не должны использоваться. Регулярная очистка и обслуживание касок необходимы для поддержания их защитных свойств.</p>
+        <p>Визуальный осмотр касок включает в себя проверку внешнего вида, целостности материала, наличия механических повреждений. Все выявленные повреждения должны быть устранены до использования касок.</p>
+        <p>Очистка касок выполняется с применением мягких моющих средств и воды. Необходимо избегать применения агрессивных химических веществ, которые могут повредить материал каски.</p>
+        <p>Обслуживание касок включает в себя проверку системы крепления, замену изношенных элементов, регулировку размера. Все работы должны выполняться в соответствии с инструкцией производителя.</p>
+        <p>При хранении защитные каски должны находиться в сухом, прохладном месте, защищённом от прямых солнечных лучей и источников тепла. Рекомендуется хранить каски в вертикальном положении или на специальных стойках, которые предотвращают их деформацию.</p>
+        <p>Условия хранения касок включают в себя температуру, влажность, защиту от прямых солнечных лучей, отсутствие механических повреждений. Нарушение условий хранения может привести к ухудшению свойств касок.</p>
+        <p>Срок службы защитных касок зависит от условий эксплуатации, частоты использования, качества материалов. При правильном использовании и хранении каски могут служить несколько лет.</p>
+        <p>При утилизации защитных касок необходимо соблюдать требования по охране окружающей среды. Каски могут содержать вредные вещества, которые требуют специальной утилизации.</p>
+        <p>Обучение персонала по использованию защитных касок включает в себя правила выбора, использования, хранения, обслуживания касок. Обучение позволяет повысить уровень безопасности при работе с электрооборудованием.</p>
+        <p>Защитные очки защищают глаза от искр, брызг расплавленного металла, ультрафиолетового излучения, летящих частиц. При работе с высоковольтным оборудованием и при выполнении сварочных работ защита глаз и лица является обязательной.</p>
+        <p>Существуют различные типы защитных очков: обычные защитные очки, очки с боковой защитой, очки с диэлектрическими вставками. Выбор типа очков зависит от характера выполняемых работ.</p>
+        <p>Обычные защитные очки защищают глаза от крупных частиц и брызг. Они используются при выполнении работ с низким риском повреждения глаз.</p>
+        <p>Очки с боковой защитой защищают глаза от частиц, летящих сбоку. Они используются при выполнении работ с повышенным риском повреждения глаз.</p>
+        <p>Очки с диэлектрическими вставками защищают глаза от электрического тока. Они используются при работе с высоковольтным оборудованием.</p>
+        <p>Защитные щитки обеспечивают более полную защиту лица и шеи. Они изготавливаются из диэлектрических материалов и имеют регулируемую степень защиты от различных типов излучения.</p>
+        <p>Современные защитные щитки оснащаются затемняемыми стеклами с автоматической регулировкой степени затемнения. Это позволяет адаптировать степень защиты к условиям работы.</p>
+        <p>При выборе защитных очков и щитков необходимо учитывать стандарты безопасности, такие как ANSI Z87.1 в США или ГОСТ в России. Эти стандарты определяют требования к прочности, оптическим характеристикам, степени защиты от различных опасностей.</p>
+        <p>Регулярная очистка и обслуживание защитных очков и щитков является важным аспектом их эффективного использования. Повреждённые или загрязнённые защитные средства могут не обеспечить необходимый уровень защиты и даже создать дополнительную опасность.</p>
+        <p>Очистка защитных очков и щитков выполняется с применением мягких моющих средств и воды. Необходимо избегать применения агрессивных химических веществ, которые могут повредить материал.</p>
+        <p>Обслуживание защитных очков и щитков включает в себя проверку целостности, замену повреждённых элементов, регулировку. Все работы должны выполняться в соответствии с инструкцией производителя.</p>
+        <p>Срок службы защитных очков и щитков зависит от условий эксплуатации, частоты использования, качества материалов. При правильном использовании и хранении они могут служить несколько лет.</p>
+        <p>При утилизации защитных очков и щитков необходимо соблюдать требования по охране окружающей среды. Они могут содержать вредные вещества, которые требуют специальной утилизации.</p>
+        <p>Обучение персонала по использованию защитных очков и щитков включает в себя правила выбора, использования, хранения, обслуживания. Обучение позволяет повысить уровень безопасности при работе с электрооборудованием.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="chapter4">
+    <div class="container">
+      <h2 class="section-title">ГЛАВА 4: ЗАЗЕМЛЕНИЕ И ЗАНУЛЕНИЕ</h2>
+      
+      <div class="chapter-nav">
+        <button class="chapter-btn active">4.1 Основные принципы</button>
+        <button class="chapter-btn">4.2 Типы заземляющих устройств</button>
+        <button class="chapter-btn">4.3 Проектирование</button>
+        <button class="chapter-btn">4.4 Испытания</button>
+      </div>
+      
+      <div class="card">
+        <h3><i class="fas fa-bolt"></i> 4.1 Основные принципы заземления</h3>
+        <p>Заземление является одной из фундаментальных мер электробезопасности, которая обеспечивает защиту людей и оборудования от поражения электрическим током, повреждений, вызванных перенапряжениями, и других опасностей, связанных с электричеством. Правильное проектирование, монтаж и обслуживание систем заземления играют критически важную роль в обеспечении надёжной и безопасной эксплуатации электрических установок.</p>
+        <p>Заземление — это преднамеренное электрическое соединение частей электрической установки с заземляющим устройством. Основная цель заземления — создание безопасного пути для протекания токов утечки, короткого замыкания и атмосферных разрядов в землю, минуя тело человека и чувствительное оборудование.</p>
+        <p>Существует несколько типов заземления: защитное заземление, рабочее заземление, молниезащитное заземление и функциональное заземление. Защитное заземление предназначено для защиты людей от поражения электрическим током. Рабочее заземление обеспечивает нормальную работу электрооборудования. Молниезащитное заземление отводит ток молнии в землю. Функциональное заземление создаёт определённый электрический потенциал для работы электронных устройств.</p>
+        <p>Эффективность заземления определяется сопротивлением заземляющего устройства. Чем меньше сопротивление, тем лучше заземление. Согласно нормативным документам, сопротивление заземляющего устройства не должно превышать определённых значений: 4 Ом для сетей с глухозаземлённой нейтралью, 10 Ом для установок выше 1000 В с изолированной нейтралью, 30 Ом для установок до 1000 В с изолированной нейтралью.</p>
+        <p>Сопротивление заземления зависит от нескольких факторов: удельного сопротивления грунта, размеров и формы заземлителей, количества заземлителей, расстояния между ними, глубины заложения. Удельное сопротивление грунта может варьироваться в широких пределах в зависимости от типа грунта, влажности, температуры, содержания солей и других факторов.</p>
+        <p>Для уменьшения сопротивления заземления применяются различные методы: увеличение количества и размеров заземлителей, использование химических реагентов для снижения удельного сопротивления грунта, применение глубинных заземлителей, использование естественных заземлителей.</p>
+        <p>Заземление является одной из фундаментальных мер электробезопасности, которая обеспечивает защиту людей и оборудования от поражения электрическим током, повреждений, вызванных перенапряжениями, и других опасностей, связанных с электричеством.</p>
+        <p>Правильное проектирование, монтаж и обслуживание систем заземления играют критически важную роль в обеспечении надёжной и безопасной эксплуатации электрических установок. Заземление применяется во всех типах электроустановок: от бытовых до промышленных.</p>
+        <p>Заземление — это преднамеренное электрическое соединение частей электрической установки с заземляющим устройством. Основная цель заземления — создание безопасного пути для протекания токов утечки, короткого замыкания и атмосферных разрядов в землю, минуя тело человека и чувствительное оборудование.</p>
+        <p>Электрическое соединение с заземляющим устройством должно быть надёжным и иметь минимальное сопротивление. Соединение выполняется с применением сварки, болтовых соединений или других надёжных методов.</p>
+        <p>Заземляющее устройство состоит из заземлителей, соединительных проводников и заземляющего проводника. Заземлители устанавливаются в грунте, соединительные проводники соединяют заземлители между собой, заземляющий проводник соединяет заземляющее устройство с электроустановкой.</p>
+        <p>Существует несколько типов заземления: защитное заземление, рабочее заземление, молниезащитное заземление и функциональное заземление. Каждый тип заземления имеет свои цели и особенности применения.</p>
+        <p>Защитное заземление предназначено для защиты людей от поражения электрическим током. При повреждении изоляции ток утечки протекает через заземляющий проводник в землю, минуя тело человека. Это значительно снижает вероятность поражения электрическим током.</p>
+        <p>Рабочее заземление обеспечивает нормальную работу электрооборудования. Некоторые виды оборудования требуют заземления для своей нормальной работы. Например, трансформаторы, электродвигатели, электронные устройства и другие.</p>
+        <p>Молниезащитное заземление отводит ток молнии в землю, предотвращая его протекание через здание и оборудование. Молниезащитное заземление применяется в системах молниезащиты зданий и сооружений.</p>
+        <p>Функциональное заземление создаёт определённый электрический потенциал для работы электронных устройств. Некоторые электронные устройства требуют заземления для своей нормальной работы.</p>
+        <p>Эффективность заземления определяется сопротивлением заземляющего устройства. Чем меньше сопротивление, тем лучше заземление. Сопротивление заземления измеряется в омах и должно соответствовать установленным нормам.</p>
+        <p>Согласно нормативным документам, сопротивление заземляющего устройства не должно превышать определённых значений: 4 Ом для сетей с глухозаземлённой нейтралью, 10 Ом для установок выше 1000 В с изолированной нейтралью, 30 Ом для установок до 1000 В с изолированной нейтралью.</p>
+        <p>Сопротивление заземления зависит от нескольких факторов: удельного сопротивления грунта, размеров и формы заземлителей, количества заземлителей, расстояния между ними, глубины заложения. Удельное сопротивление грунта может варьироваться в широких пределах в зависимости от типа грунта, влажности, температуры, содержания солей и других факторов.</p>
+        <p>Удельное сопротивление грунта является основным параметром, определяющим сопротивление заземления. Разные типы грунта имеют разное удельное сопротивление: глина — 50-200 Ом·м, суглинок — 100-500 Ом·м, песок — 200-2000 Ом·м, гравий — 500-5000 Ом·м, скальные породы — 1000-10000 Ом·м.</p>
+        <p>Влажность грунта значительно влияет на его удельное сопротивление. С увеличением влажности удельное сопротивление грунта уменьшается. При влажности 10% удельное сопротивление грунта может быть в 10 раз больше, чем при влажности 50%.</p>
+        <p>Температура грунта также влияет на его удельное сопротивление. При понижении температуры удельное сопротивление грунта увеличивается. При температуре ниже 0°C удельное сопротивление грунта может увеличиться в несколько раз.</p>
+        <p>Содержание солей в грунте влияет на его удельное сопротивление. С увеличением содержания солей удельное сопротивление грунта уменьшается. Грунты с высоким содержанием солей имеют низкое удельное сопротивление.</p>
+        <p>Для уменьшения сопротивления заземления применяются различные методы: увеличение количества и размеров заземлителей, использование химических реагентов для снижения удельного сопротивления грунта, применение глубинных заземлителей, использование естественных заземлителей.</p>
+        <p>Увеличение количества и размеров заземлителей позволяет уменьшить сопротивление заземления. Однако при этом увеличиваются затраты на материалы и монтаж. Необходимо находить оптимальное соотношение между эффективностью и затратами.</p>
+        <p>Использование химических реагентов для снижения удельного сопротивления грунта позволяет значительно уменьшить сопротивление заземления. Однако при этом необходимо учитывать влияние химических реагентов на окружающую среду и коррозию металлических конструкций.</p>
+        <p>Применение глубинных заземлителей позволяет использовать более влажные и стабильные слои грунта. Глубинные заземлители особенно эффективны в условиях сухого или мерзлого грунта на поверхности.</p>
+        <p>Использование естественных заземлителей позволяет снизить затраты на создание заземляющего устройства. Естественными заземлителями могут быть металлические конструкции зданий, трубы водопровода, арматура железобетонных конструкций и другие.</p>
+      </div>
+      
+      <div class="card">
+        <h3><i class="fas fa-cogs"></i> 4.2 Типы заземляющих устройств</h3>
+        <p>Существует множество различных типов заземляющих устройств, выбор которых зависит от условий эксплуатации, требований к сопротивлению, доступности материалов и других факторов. Наиболее распространёнными являются контурные, лучевые и комбинированные заземляющие устройства.</p>
+        <p>Контурное заземляющее устройство представляет собой замкнутый контур из горизонтальных заземлителей, соединённых между собой. Контур может быть прямоугольным, квадратным или другой формы. Контурные заземляющие устройства обеспечивают хорошее распределение потенциала и устойчивость к повреждениям.</p>
+        <p>Лучевое заземляющее устройство состоит из нескольких лучей, расходящихся от центральной точки. Лучи могут быть горизонтальными или вертикальными. Лучевые заземляющие устройства просты в монтаже и позволяют легко добавлять дополнительные заземлители.</p>
+        <p>Комбинированные заземляющие устройства сочетают в себе элементы контурных и лучевых систем. Они обеспечивают оптимальное распределение тока и могут адаптироваться к различным условиям эксплуатации.</p>
+        <p>Вертикальные заземлители, такие как стержни, трубы, угловая сталь, обеспечивают хороший контакт с грунтом на большой глубине. Глубинные заземлители особенно эффективны в условиях сухого или мерзлого грунта на поверхности.</p>
+        <p>Горизонтальные заземлители, такие как полоса, провод, уголок, обеспечивают распределение потенциала по поверхности. Они могут быть проложены на различной глубине в зависимости от условий эксплуатации.</p>
+        <p>Существует множество различных типов заземляющих устройств, выбор которых зависит от условий эксплуатации, требований к сопротивлению, доступности материалов и других факторов. Каждый тип заземляющего устройства имеет свои преимущества и недостатки.</p>
+        <p>Контурное заземляющее устройство представляет собой замкнутый контур из горизонтальных заземлителей, соединённых между собой. Контур может быть прямоугольным, квадратным или другой формы. Контурные заземляющие устройства обеспечивают хорошее распределение потенциала и устойчивость к повреждениям.</p>
+        <p>Преимущества контурного заземляющего устройства включают в себя равномерное распределение потенциала, устойчивость к повреждениям, возможность расширения. Недостатки включают в себя сложность монтажа, высокую стоимость материалов.</p>
+        <p>Контур может быть выполнен из различных материалов: стальной полосы, медного провода, оцинкованной стали. Выбор материала зависит от условий эксплуатации, требований к сроку службы, стоимости.</p>
+        <p>Размеры контура определяются требованиями к сопротивлению заземления, размерами площадки, доступностью материалов. Контур должен иметь минимальное сопротивление и обеспечивать надёжную защиту.</p>
+        <p>Лучевое заземляющее устройство состоит из нескольких лучей, расходящихся от центральной точки. Лучи могут быть горизонтальными или вертикальными. Лучевые заземляющие устройства просты в монтаже и позволяют легко добавлять дополнительные заземлители.</p>
+        <p>Преимущества лучевого заземляющего устройства включают в себя простоту монтажа, возможность расширения, низкую стоимость. Недостатки включают в себя неравномерное распределение потенциала, чувствительность к повреждениям.</p>
+        <p>Лучи могут быть выполнены из различных материалов: стальных труб, медных проводов, оцинкованной стали. Выбор материала зависит от условий эксплуатации, требований к сроку службы, стоимости.</p>
+        <p>Количество лучей определяется требованиями к сопротивлению заземления, размерами площадки, доступностью материалов. Лучи должны иметь минимальное сопротивление и обеспечивать надёжную защиту.</p>
+        <p>Комбинированные заземляющие устройства сочетают в себе элементы контурных и лучевых систем. Они обеспечивают оптимальное распределение тока и могут адаптироваться к различным условиям эксплуатации.</p>
+        <p>Преимущества комбинированного заземляющего устройства включают в себя оптимальное распределение потенциала, устойчивость к повреждениям, возможность расширения. Недостатки включают в себя сложность проектирования, высокую стоимость.</p>
+        <p>Комбинированное устройство может включать в себя контур, лучи, вертикальные заземлители. Все элементы должны быть правильно спроектированы и смонтированы.</p>
+        <p>Вертикальные заземлители, такие как стержни, трубы, угловая сталь, обеспечивают хороший контакт с грунтом на большой глубине. Глубинные заземлители особенно эффективны в условиях сухого или мерзлого грунта на поверхности.</p>
+        <p>Преимущества вертикальных заземлителей включают в себя хороший контакт с грунтом, устойчивость к поверхностным изменениям, возможность использования глубинных слоев грунта. Недостатки включают в себя сложность монтажа, высокую стоимость.</p>
+        <p>Вертикальные заземлители могут быть выполнены из различных материалов: стальных стержней, медных труб, оцинкованной стали. Выбор материала зависит от условий эксплуатации, требований к сроку службы, стоимости.</p>
+        <p>Глубина заложения вертикальных заземлителей определяется свойствами грунта, требованиями к сопротивлению, доступностью оборудования. Глубина должна быть достаточной для обеспечения надёжного контакта с грунтом.</p>
+        <p>Горизонтальные заземлители, такие как полоса, провод, уголок, обеспечивают распределение потенциала по поверхности. Они могут быть проложены на различной глубине в зависимости от условий эксплуатации.</p>
+        <p>Преимущества горизонтальных заземлителей включают в себя простоту монтажа, низкую стоимость, возможность использования на ограниченной площади. Недостатки включают в себя чувствительность к поверхностным изменениям, зависимость от влажности грунта.</p>
+        <p>Горизонтальные заземлители могут быть выполнены из различных материалов: стальной полосы, медного провода, оцинкованной стали. Выбор материала зависит от условий эксплуатации, требований к сроку службы, стоимости.</p>
+        <p>Глубина заложения горизонтальных заземлителей определяется свойствами грунта, требованиями к сопротивлению, доступностью оборудования. Глубина должна быть достаточной для обеспечения надёжного контакта с грунтом.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="chapter5">
+    <div class="container">
+      <h2 class="section-title">ГЛАВА 5: ЗАЩИТА ЭЛЕКТРИЧЕСКИХ ЦЕПЕЙ</h2>
+      
+      <div class="chapter-nav">
+        <button class="chapter-btn active">5.1 Автоматические выключатели</button>
+        <button class="chapter-btn">5.2 Предохранители</button>
+        <button class="chapter-btn">5.3 УЗО</button>
+        <button class="chapter-btn">5.4 Координация защиты</button>
+      </div>
+      
+      <div class="card">
+        <h3><i class="fas fa-power-off"></i> 5.1 Автоматические выключатели</h3>
+        <p>Автоматические выключатели предназначены для защиты от перегрузок и коротких замыканий. Они автоматически отключают цепь при превышении номинального тока или при возникновении короткого замыкания. Современные автоматические выключатели обладают высокой надёжностью и точностью срабатывания.</p>
+        <p>Предохранители являются простыми и надёжными устройствами защиты. При превышении номинального тока плавкая вставка предохранителя расплавляется, размыкая цепь. Предохранители обладают высокой скоростью срабатывания и низкой стоимостью, но требуют замены после срабатывания.</p>
+        <p>Устройства защитного отключения (УЗО) предназначены для защиты от токов утечки. Они отключают цепь при возникновении дифференциального тока, который может возникнуть при повреждении изоляции или при контакте человека с токоведущими частями. УЗО обеспечивают высокий уровень защиты от поражения электрическим током.</p>
+        <p>Дифференциальные автоматические выключатели сочетают в себе функции автоматического выключателя и УЗО. Они защищают от перегрузок, коротких замыканий и токов утечки. Такие устройства обеспечивают комплексную защиту и экономят пространство в распределительных щитах.</p>
+        <p>Реле максимального тока предназначены для защиты от перегрузок и коротких замыканий в сетях среднего и высокого напряжения. Они обладают регулируемыми параметрами срабатывания и могут обеспечивать селективную защиту.</p>
+        <p>Реле минимального и нулевого напряжения защищают оборудование от пониженного напряжения и исчезновения напряжения. Они предотвращают некорректную работу оборудования при ненормальных режимах работы сети.</p>
+        <p>Автоматические выключатели предназначены для защиты от перегрузок и коротких замыканий. Они автоматически отключают цепь при превышении номинального тока или при возникновении короткого замыкания. Современные автоматические выключатели обладают высокой надёжностью и точностью срабатывания.</p>
+        <p>Принцип действия автоматического выключателя основан на использовании теплового и электромагнитного расцепителей. Тепловой расцепитель срабатывает при длительном превышении номинального тока, электромагнитный расцепитель срабатывает при коротком замыкании.</p>
+        <p>Тепловой расцепитель представляет собой биметаллическую пластину, которая изгибается при нагреве током. При превышении номинального тока пластина изгибается и приводит в действие механизм отключения.</p>
+        <p>Электромагнитный расцепитель представляет собой соленоид, который создает магнитное поле при протекании тока. При коротком замыкании ток резко возрастает, магнитное поле становится достаточно сильным для срабатывания расцепителя.</p>
+        <p>Автоматические выключатели имеют различные характеристики срабатывания: тип B, тип C, тип D. Тип B срабатывает при токе 3-5 кратном номинальному, тип C при токе 5-10 кратном номинальному, тип D при токе 10-20 кратном номинальному.</p>
+        <p>Тип B автоматических выключателей применяется для защиты цепей с активной нагрузкой: освещения, отопления, розеток. Эти выключатели имеют высокую чувствительность к перегрузкам.</p>
+        <p>Тип C автоматических выключателей применяется для защиты цепей с индуктивной нагрузкой: электродвигателей, трансформаторов, люминесцентных ламп. Эти выключатели имеют среднюю чувствительность к перегрузкам.</p>
+        <p>Тип D автоматических выключателей применяется для защиты цепей с большой индуктивностью: электродвигателей с тяжелым пуском, сварочных аппаратов, импульсных источников питания. Эти выключатели имеют низкую чувствительность к перегрузкам.</p>
+        <p>Автоматические выключатели имеют различные номинальные токи: 6А, 10А, 16А, 20А, 25А, 32А, 40А, 50А, 63А. Выбор номинального тока зависит от сечения проводов, мощности нагрузки, условий эксплуатации.</p>
+        <p>Номинальный ток автоматического выключателя должен быть меньше или равен длительному допустимому току проводов. Это обеспечивает защиту проводов от перегрева и возгорания.</p>
+        <p>Автоматические выключатели имеют различные номинальные напряжения: 230В, 400В, 690В. Выбор номинального напряжения зависит от напряжения сети, условий эксплуатации.</p>
+        <p>Автоматические выключатели имеют различные номинальные отключающие способности: 6кА, 10кА, 15кА, 25кА, 35кА, 50кА, 70кА, 100кА. Номинальная отключающая способность должна быть больше максимального тока короткого замыкания в точке установки выключателя.</p>
+        <p>Автоматические выключатели имеют различные степени защиты: IP20, IP40, IP54, IP65. Степень защиты определяет уровень защиты от пыли, влаги, механических повреждений.</p>
+        <p>Автоматические выключатели могут иметь дополнительные функции: сигнализация срабатывания, дистанционное управление, измерение параметров, самодиагностика. Эти функции повышают удобство эксплуатации и надежность работы.</p>
+        <p>Автоматические выключатели должны соответствовать требованиям стандартов безопасности: IEC 60898, IEC 60947, ГОСТ Р 50345. Эти стандарты определяют требования к электрической прочности, механической прочности, надежности, безопасности.</p>
+        <p>Автоматические выключатели должны проходить испытания на электрическую прочность, механическую прочность, надежность, безопасность. Испытания выполняются в соответствии с требованиями стандартов.</p>
+        <p>Автоматические выключатели должны иметь сертификаты соответствия, декларации о соответствии, паспорта, инструкции по эксплуатации. Эти документы подтверждают соответствие выключателей требованиям стандартов.</p>
+        <p>Автоматические выключатели должны иметь гарантию, сервисное обслуживание, запасные части. Это обеспечивает надежную и безопасную эксплуатацию выключателей.</p>
+        <p>Автоматические выключатели должны правильно монтироваться, эксплуатироваться, обслуживаться. Неправильная установка, эксплуатация, обслуживание могут привести к отказу выключателей и авариям.</p>
+      </div>
+      
+      <div class="card">
+        <h3><i class="fas fa-fuse"></i> 5.2 Предохранители</h3>
+        <p>Предохранители являются простыми и надёжными устройствами защиты. При превышении номинального тока плавкая вставка предохранителя расплавляется, размыкая цепь. Предохранители обладают высокой скоростью срабатывания и низкой стоимостью, но требуют замены после срабатывания.</p>
+        <p>Предохранители применяются в различных электроустановках: от бытовых до промышленных. Они обеспечивают защиту от перегрузок и коротких замыканий, имеют простую конструкцию и низкую стоимость.</p>
+        <p>Принцип действия предохранителя основан на плавлении плавкой вставки при превышении номинального тока. Плавкая вставка изготавливается из материалов с низкой температурой плавления: свинца, олова, цинка, серебра.</p>
+        <p>При нормальном режиме работы ток протекает через плавкую вставку без её повреждения. При превышении номинального тока плавкая вставка нагревается и плавится, размыкая цепь.</p>
+        <p>Время срабатывания предохранителя зависит от величины тока и характеристик плавкой вставки. При больших токах предохранитель срабатывает быстрее, при меньших токах — медленнее.</p>
+        <p>Предохранители имеют различные характеристики срабатывания: быстродействующие, нормальные, медленные. Быстродействующие предохранители срабатывают при небольшом превышении номинального тока, медленные — при большом превышении.</p>
+        <p>Быстродействующие предохранители применяются для защиты чувствительного оборудования: электронных устройств, полупроводниковых приборов, измерительных приборов.</p>
+        <p>Нормальные предохранители применяются для защиты обычного оборудования: освещения, розеток, электродвигателей.</p>
+        <p>Медленные предохранители применяются для защиты оборудования с большими пусковыми токами: электродвигателей, трансформаторов, люминесцентных ламп.</p>
+        <p>Предохранители имеют различные номинальные токи: 1А, 2А, 3А, 5А, 10А, 15А, 20А, 25А, 30А, 35А, 40А, 50А, 63А, 80А, 100А. Выбор номинального тока зависит от сечения проводов, мощности нагрузки, условий эксплуатации.</p>
+        <p>Номинальный ток предохранителя должен быть меньше или равен длительному допустимому току проводов. Это обеспечивает защиту проводов от перегрева и возгорания.</p>
+        <p>Предохранители имеют различные номинальные напряжения: 250В, 400В, 500В, 690В, 1000В. Выбор номинального напряжения зависит от напряжения сети, условий эксплуатации.</p>
+        <p>Предохранители имеют различные номинальные отключающие способности: 1кА, 3кА, 6кА, 10кА, 15кА, 25кА, 35кА, 50кА, 70кА, 100кА. Номинальная отключающая способность должна быть больше максимального тока короткого замыкания в точке установки предохранителя.</p>
+        <p>Предохранители имеют различные типы исполнения: трубчатые, ножевые, вилочные, автоматические. Тип исполнения зависит от условий эксплуатации, требований к надежности, стоимости.</p>
+        <p>Трубчатые предохранители применяются в низковольтных сетях. Они имеют высокую надежность, низкую стоимость, простую конструкцию.</p>
+        <p>Ножевые предохранители применяются в низковольтных и средневольтных сетях. Они имеют высокую надежность, возможность регулировки, простую конструкцию.</p>
+        <p>Вилочные предохранители применяются в бытовых и промышленных сетях. Они имеют высокую надежность, удобство замены, низкую стоимость.</p>
+        <p>Автоматические предохранители применяются в промышленных сетях. Они имеют высокую надежность, автоматическую замену, возможность дистанционного управления.</p>
+        <p>Предохранители должны соответствовать требованиям стандартов безопасности: IEC 60269, ГОСТ Р 50346. Эти стандарты определяют требования к электрической прочности, механической прочности, надежности, безопасности.</p>
+        <p>Предохранители должны проходить испытания на электрическую прочность, механическую прочность, надежность, безопасность. Испытания выполняются в соответствии с требованиями стандартов.</p>
+        <p>Предохранители должны иметь сертификаты соответствия, декларации о соответствии, паспорта, инструкции по эксплуатации. Эти документы подтверждают соответствие предохранителей требованиям стандартов.</p>
+        <p>Предохранители должны иметь гарантию, сервисное обслуживание, запасные части. Это обеспечивает надежную и безопасную эксплуатацию предохранителей.</p>
+        <p>Предохранители должны правильно монтироваться, эксплуатироваться, обслуживаться. Неправильная установка, эксплуатация, обслуживание могут привести к отказу предохранителей и авариям.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="chapter6">
+    <div class="container">
+      <h2 class="section-title">ГЛАВА 6: МЕЖДУНАРОДНЫЕ СТАНДАРТЫ</h2>
+      
+      <div class="chapter-nav">
+        <button class="chapter-btn active">6.1 IEC 60364</button>
+        <button class="chapter-btn">6.2 NFPA 70E</button>
+        <button class="chapter-btn">6.3 OSHA</button>
+        <button class="chapter-btn">6.4 EN стандарты</button>
+      </div>
+      
+      <div class="card">
+        <h3><i class="fas fa-globe"></i> 6.1 IEC 60364 - Low-voltage electrical installations</h3>
+        <p>Международный электротехнический комитет (IEC) разработал стандарт <span class="code-string">IEC 60364</span>, который является основным международным стандартом для низковольтных электрических установок. Этот стандарт охватывает все аспекты проектирования, монтажа, эксплуатации и обслуживания электрических установок.</p>
+        <p>Стандарт <span class="code-string">IEC 60364</span> состоит из нескольких частей:</p>
+        <ul>
+          <li>IEC 60364-1: Основные принципы и основные характеристики</li>
+          <li>IEC 60364-4-41: Защита от поражения электрическим током</li>
+          <li>IEC 60364-4-42: Защита от тепловых воздействий</li>
+          <li>IEC 60364-4-43: Защита от перегрузок по току</li>
+          <li>IEC 60364-4-44: Защита от перенапряжений</li>
+          <li>IEC 60364-5-52: Выбор и монтаж электрооборудования</li>
+          <li>IEC 60364-6: Проверка</li>
+          <li>IEC 60364-7-701: Помещения с повышенной опасностью</li>
+        </ul>
+        <p>Стандарт устанавливает требования к минимальному сопротивлению изоляции (0.5 МОм для бытовых установок), максимальному сопротивлению заземления (4 Ом для сетей с глухозаземлённой нейтралью) и другим параметрам безопасности.</p>
+        <div class="standard-box">
+          <h4><i class="fas fa-book"></i> Стандарт</h4>
+          <p><span class="code-string">IEC 60364-4-41</span> определяет следующие типы защиты от поражения электрическим током:</p>
+          <p>• Basic protection (Основная защита) - изоляция токоведущих частей</p>
+          <p>• Fault protection (Защита при повреждении) - заземление и автоматическое отключение</p>
+          <p>• Additional protection (Дополнительная защита) - устройства защитного отключения (УЗО)</p>
+        </div>
+        <p>Международный электротехнический комитет (IEC) разработал стандарт <span class="code-string">IEC 60364</span>, который является основным международным стандартом для низковольтных электрических установок. Этот стандарт охватывает все аспекты проектирования, монтажа, эксплуатации и обслуживания электрических установок.</p>
+        <p>Стандарт <span class="code-string">IEC 60364</span> разрабатывался с учетом опыта эксплуатации, анализа аварийных ситуаций, новых технологических решений. Стандарт постоянно обновляется и совершенствуется.</p>
+        <p>Стандарт <span class="code-string">IEC 60364</span> состоит из нескольких частей, каждая из которых посвящена определенному аспекту электробезопасности:</p>
+        <p>IEC 60364-1: Основные принципы и основные характеристики. Эта часть стандарта определяет основные принципы электробезопасности, термины и определения, классификацию установок.</p>
+        <p>IEC 60364-4-41: Защита от поражения электрическим током. Эта часть стандарта определяет методы защиты от поражения электрическим током: основную защиту, защиту при повреждении, дополнительную защиту.</p>
+        <p>IEC 60364-4-42: Защита от тепловых воздействий. Эта часть стандарта определяет методы защиты от перегрева, возгорания, ожогов.</p>
+        <p>IEC 60364-4-43: Защита от перегрузок по току. Эта часть стандарта определяет методы защиты от перегрузок, коротких замыканий.</p>
+        <p>IEC 60364-4-44: Защита от перенапряжений. Эта часть стандарта определяет методы защиты от атмосферных и коммутационных перенапряжений.</p>
+        <p>IEC 60364-5-52: Выбор и монтаж электрооборудования. Эта часть стандарта определяет требования к выбору и монтажу электрооборудования.</p>
+        <p>IEC 60364-6: Проверка. Эта часть стандарта определяет методы проверки электрических установок.</p>
+        <p>IEC 60364-7-701: Помещения с повышенной опасностью. Эта часть стандарта определяет особенности проектирования и монтажа в помещениях с повышенной опасностью.</p>
+        <p>Стандарт устанавливает требования к минимальному сопротивлению изоляции (0.5 МОм для бытовых установок), максимальному сопротивлению заземления (4 Ом для сетей с глухозаземлённой нейтралью) и другим параметрам безопасности.</p>
+        <p>Минимальное сопротивление изоляции 0.5 МОм обеспечивает защиту от токов утечки, которые могут быть опасны для человека. Это значение установлено с учетом возможных условий эксплуатации.</p>
+        <p>Максимальное сопротивление заземления 4 Ом обеспечивает эффективное отведение токов утечки в землю. Это значение установлено с учетом возможных условий эксплуатации.</p>
+        <p>Стандарт определяет классификацию помещений по степени опасности: нормальные, повышенной опасности, особо опасные. Классификация влияет на требования к проектированию и монтажу.</p>
+        <p>Нормальные помещения - помещения без повышенной опасности. В этих помещениях применяются стандартные требования к электробезопасности.</p>
+        <p>Помещения повышенной опасности - помещения с повышенной влажностью, высокой температурой, наличием токопроводящей пыли. В этих помещениях применяются дополнительные требования к электробезопасности.</p>
+        <p>Особо опасные помещения - помещения с химически активной средой, взрывоопасной зоной, наличием источников ионизирующего излучения. В этих помещениях применяются специальные требования к электробезопасности.</p>
+        <p>Стандарт определяет классификацию электрических установок по напряжению: до 50 В, от 50 В до 1000 В, выше 1000 В. Классификация влияет на требования к проектированию и монтажу.</p>
+        <p>Установки до 50 В считаются безопасными для человека. Для этих установок применяются упрощенные требования к электробезопасности.</p>
+        <p>Установки от 50 В до 1000 В требуют соблюдения стандартных требований к электробезопасности. Для этих установок применяются стандартные требования к проектированию и монтажу.</p>
+        <p>Установки выше 1000 В требуют соблюдения специальных требований к электробезопасности. Для этих установок применяются специальные требования к проектированию и монтажу.</p>
+        <p>Стандарт определяет требования к системам заземления: TN-C, TN-S, TN-C-S, TT, IT. Каждая система имеет свои особенности и области применения.</p>
+        <p>Система TN-C - система с объединенными нулевым защитным и нулевым рабочим проводниками. Эта система применяется в старых установках.</p>
+        <p>Система TN-S - система с раздельными нулевым защитным и нулевым рабочим проводниками. Эта система применяется в новых установках.</p>
+        <p>Система TN-C-S - система с объединенными нулевым защитным и нулевым рабочим проводниками в части установки и раздельными в другой части. Эта система применяется при реконструкции старых установок.</p>
+        <p>Система TT - система с глухозаземленной нейтралью источника питания и глухозаземленным открытым проводящим частями потребителей. Эта система применяется в сельской местности.</p>
+        <p>Система IT - система с изолированной нейтралью источника питания и глухозаземленным открытым проводящими частями потребителей. Эта система применяется в установках с повышенными требованиями к надежности.</p>
+        <p>Стандарт определяет требования к устройствам защитного отключения (УЗО): номинальный дифференциальный ток отключения, время отключения, тип УЗО. Эти требования обеспечивают эффективную защиту от поражения электрическим током.</p>
+        <p>Номинальный дифференциальный ток отключения УЗО определяет чувствительность устройства к токам утечки. Стандарт устанавливает значения 10 мА, 30 мА, 100 мА, 300 мА, 500 мА.</p>
+        <p>Время отключения УЗО определяет скорость срабатывания устройства при возникновении токов утечки. Стандарт устанавливает требования к времени отключения в зависимости от величины тока утечки.</p>
+        <p>Тип УЗО определяет способность устройства реагировать на различные виды токов утечки: переменный, постоянный, пульсирующий. Стандарт устанавливает типы АС, А, В.</p>
+        <p>Стандарт определяет требования к автоматическим выключателям: номинальный ток, отключающая способность, характеристика срабатывания. Эти требования обеспечивают защиту от перегрузок и коротких замыканий.</p>
+        <p>Номинальный ток автоматического выключателя определяет максимальный ток, который может протекать через выключатель в течение длительного времени. Стандарт устанавливает значения от 6 А до 6300 А.</p>
+        <p>Отключающая способность автоматического выключателя определяет максимальный ток короткого замыкания, который может отключить выключатель. Стандарт устанавливает значения от 3 кА до 100 кА.</p>
+        <p>Характеристика срабатывания автоматического выключателя определяет время срабатывания в зависимости от величины тока. Стандарт устанавливает характеристики B, C, D.</p>
+        <p>Стандарт определяет требования к кабелям и проводам: сечение, изоляция, маркировка. Эти требования обеспечивают безопасную эксплуатацию электрических установок.</p>
+        <p>Сечение кабелей и проводов определяет их способность пропускать ток без перегрева. Стандарт устанавливает минимальные сечения в зависимости от номинального тока.</p>
+        <p>Изоляция кабелей и проводов определяет их способность выдерживать рабочее напряжение и перенапряжения. Стандарт устанавливает требования к материалам изоляции.</p>
+        <p>Маркировка кабелей и проводов определяет возможность их идентификации. Стандарт устанавливает требования к маркировке: цветовая, цифровая, буквенно-цифровая.</p>
+        <p>Стандарт определяет требования к распределительным щитам: степень защиты, размеры, конструкция. Эти требования обеспечивают безопасную эксплуатацию распределительных щитов.</p>
+        <p>Степень защиты распределительных щитов определяет их способность защищать от пыли, влаги, механических повреждений. Стандарт устанавливает степени защиты от IP20 до IP65.</p>
+        <p>Размеры распределительных щитов определяют возможность размещения необходимого оборудования. Стандарт устанавливает минимальные размеры в зависимости от количества модулей.</p>
+        <p>Конструкция распределительных щитов определяет их надежность и безопасность. Стандарт устанавливает требования к материалам, креплениям, защитным устройствам.</p>
+      </div>
+      
+      <div class="card">
+        <h3><i class="fas fa-fire"></i> 6.2 NFPA 70E - Standard for Electrical Safety in the Workplace</h3>
+        <p>Национальная ассоциация противопожарной защиты (NFPA) разработала стандарт <span class="code-string">NFPA 70E</span>, который является ведущим стандартом по электробезопасности на рабочем месте в США. Этот стандарт охватывает все аспекты безопасности при работе с электрическими установками, включая оценку рисков, средства защиты, процедуры отключения и многое другое.</p>
+        <p>Стандарт <span class="code-string">NFPA 70E</span> включает следующие ключевые разделы:</p>
+        <ul>
+          <li>Оценка рисков и определение безопасных рабочих условий</li>
+          <li>Требования к средствам индивидуальной защиты</li>
+          <li>Процедуры безопасного отключения и блокировки</li>
+          <li>Требования к обучению персонала</li>
+          <li>Управление безопасностью и документация</li>
+        </ul>
+        <p>Одним из ключевых понятий в <span class="code-string">NFPA 70E</span> является "Limited Approach Boundary" (Граница ограниченного доступа) и "Restricted Approach Boundary" (Граница ограниченного приближения), которые определяют безопасные расстояния при работе с электрическим оборудованием.</p>
+        <div class="standard-box">
+          <h4><i class="fas fa-book"></i> Стандарт</h4>
+          <p><span class="code-string">NFPA 70E</span> требует следующие категории риска:</p>
+          <p>• Category 0: До 1.2 cal/cm²</p>
+          <p>• Category 1: 4 cal/cm²</p>
+          <p>• Category 2: 8 cal/cm²</p>
+          <p>• Category 3: 25 cal/cm²</p>
+          <p>• Category 4: 40 cal/cm² и выше</p>
+        </div>
+        <p>Национальная ассоциация противопожарной защиты (NFPA) разработала стандарт <span class="code-string">NFPA 70E</span>, который является ведущим стандартом по электробезопасности на рабочем месте в США. Этот стандарт охватывает все аспекты безопасности при работе с электрическими установками, включая оценку рисков, средства защиты, процедуры отключения и многое другое.</p>
+        <p>Стандарт <span class="code-string">NFPA 70E</span> разрабатывался с учетом опыта эксплуатации, анализа аварийных ситуаций, новых технологических решений. Стандарт постоянно обновляется и совершенствуется.</p>
+        <p>Стандарт <span class="code-string">NFPA 70E</span> включает следующие ключевые разделы:</p>
+        <p>Оценка рисков и определение безопасных рабочих условий. Этот раздел стандарта определяет методы оценки рисков, определения безопасных рабочих условий, выбора средств защиты.</p>
+        <p>Требования к средствам индивидуальной защиты. Этот раздел стандарта определяет требования к средствам индивидуальной защиты: перчаткам, каскам, очкам, костюмам.</p>
+        <p>Процедуры безопасного отключения и блокировки. Этот раздел стандарта определяет процедуры безопасного отключения и блокировки оборудования перед выполнением работ.</p>
+        <p>Требования к обучению персонала. Этот раздел стандарта определяет требования к обучению персонала по электробезопасности.</p>
+        <p>Управление безопасностью и документация. Этот раздел стандарта определяет требования к управлению безопасностью и документации.</p>
+        <p>Одним из ключевых понятий в <span class="code-string">NFPA 70E</span> является "Limited Approach Boundary" (Граница ограниченного доступа) и "Restricted Approach Boundary" (Граница ограниченного приближения), которые определяют безопасные расстояния при работе с электрическим оборудованием.</p>
+        <p>Limited Approach Boundary (Граница ограниченного доступа) - расстояние, при приближении к которому требуется наличие квалифицированного персонала. Это расстояние определяется в зависимости от напряжения и условий эксплуатации.</p>
+        <p>Restricted Approach Boundary (Граница ограниченного приближения) - расстояние, при приближении к которому требуется использование средств индивидуальной защиты и специального разрешения. Это расстояние определяется в зависимости от напряжения и условий эксплуатации.</p>
+        <p>Стандарт определяет следующие категории риска:</p>
+        <p>Category 0: До 1.2 cal/cm². Эта категория риска соответствует работам под напряжением до 50 В. Для этой категории требуется минимальная защита.</p>
+        <p>Category 1: 4 cal/cm². Эта категория риска соответствует работам под напряжением до 600 В. Для этой категории требуется стандартная защита.</p>
+        <p>Category 2: 8 cal/cm². Эта категория риска соответствует работам под напряжением до 1000 В. Для этой категории требуется усиленная защита.</p>
+        <p>Category 3: 25 cal/cm². Эта категория риска соответствует работам под напряжением до 15000 В. Для этой категории требуется максимальная защита.</p>
+        <p>Category 4: 40 cal/cm² и выше. Эта категория риска соответствует работам под напряжением выше 15000 В. Для этой категории требуется специальная защита.</p>
+        <p>Стандарт определяет требования к средствам индивидуальной защиты в зависимости от категории риска:</p>
+        <p>Для Category 0 требуется: защитные очки, перчатки.</p>
+        <p>Для Category 1 требуется: защитные очки, перчатки, каска.</p>
+        <p>Для Category 2 требуется: защитные очки, перчатки, каска, костюм.</p>
+        <p>Для Category 3 требуется: защитные очки, перчатки, каска, костюм, респиратор.</p>
+        <p>Для Category 4 требуется: защитные очки, перчатки, каска, костюм, респиратор, специальное оборудование.</p>
+        <p>Стандарт определяет процедуры безопасного отключения и блокировки оборудования:</p>
+        <p>1. Идентификация оборудования, которое необходимо отключить.</p>
+        <p>2. Отключение оборудования с помощью выключателей, рубильников, других устройств.</p>
+        <p>3. Блокировка оборудования с помощью замков, предотвращающих случайное включение.</p>
+        <p>4. Маркировка оборудования с указанием причины отключения и лица, выполнившего отключение.</p>
+        <p>5. Проверка отсутствия напряжения с помощью указателей напряжения.</p>
+        <p>6. Заземление оборудования с помощью заземляющих проводников.</p>
+        <p>Стандарт определяет требования к обучению персонала по электробезопасности:</p>
+        <p>1. Обучение должно проводиться квалифицированным персоналом.</p>
+        <p>2. Обучение должно включать теоретическую и практическую части.</p>
+        <p>3. Обучение должно проводиться регулярно, не реже одного раза в три года.</p>
+        <p>4. Обучение должно подтверждаться сертификатами, удостоверениями.</p>
+        <p>Стандарт определяет требования к управлению безопасностью и документации:</p>
+        <p>1. Должна быть разработана политика безопасности.</p>
+        <p>2. Должны быть назначены ответственные лица за безопасность.</p>
+        <p>3. Должны быть разработаны инструкции по безопасности.</p>
+        <p>4. Должна вестись документация по безопасности.</p>
+        <p>Стандарт определяет требования к оценке рисков:</p>
+        <p>1. Должна проводиться оценка рисков перед началом работ.</p>
+        <p>2. Должны определяться опасные зоны.</p>
+        <p>3. Должны определяться меры защиты.</p>
+        <p>4. Должны определяться средства индивидуальной защиты.</p>
+        <p>Стандарт определяет требования к инцидентам и авариям:</p>
+        <p>1. Должно проводиться расследование инцидентов и аварий.</p>
+        <p>2. Должны определяться причины инцидентов и аварий.</p>
+        <p>3. Должны разрабатываться меры по предотвращению повторения.</p>
+        <p>4. Должна вестись статистика инцидентов и аварий.</p>
+        <p>Стандарт определяет требования к аудиту безопасности:</p>
+        <p>1. Должен проводиться регулярный аудит безопасности.</p>
+        <p>2. Должны проверяться соблюдение требований стандарта.</p>
+        <p>3. Должны выявляться несоответствия.</p>
+        <p>4. Должны разрабатываться планы устранения несоответствий.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="chapter7">
+    <div class="container">
+      <h2 class="section-title">ГЛАВА 7: ПРАКТИЧЕСКИЕ РЕКОМЕНДАЦИИ</h2>
+      
+      <div class="chapter-nav">
+        <button class="chapter-btn active">7.1 Безопасная работа</button>
+        <button class="chapter-btn">7.2 Обслуживание</button>
+        <button class="chapter-btn">7.3 Обучение</button>
+        <button class="chapter-btn">7.4 Аварийные ситуации</button>
+      </div>
+      
+      <div class="card">
+        <h3><i class="fas fa-tools"></i> 7.1 Безопасная работа с электроустановками</h3>
+        <p>Безопасная работа с электроустановками требует строгого соблюдения правил и процедур. Перед началом любых работ необходимо отключить питание, проверить отсутствие напряжения, установить блокировки и предупреждающие знаки. Только при соблюдении всех мер безопасности можно приступать к выполнению работ.</p>
+        <p>При работе под напряжением необходимо использовать специальные средства защиты, соблюдать безопасные расстояния, иметь квалификацию и разрешение на такие работы. Работа под напряжением должна выполняться только в исключительных случаях, когда невозможно отключить питание.</p>
+        <p>При выполнении работ вблизи токоведущих частей необходимо использовать диэлектрические перчатки, защитные очки, каски, изолирующие коврики. Все инструменты должны иметь изолированные ручки и соответствовать требованиям безопасности.</p>
+        <p>При работе с высоковольтным оборудованием необходимо соблюдать особую осторожность, использовать специальные средства защиты, иметь соответствующую квалификацию. Высоковольтное оборудование представляет особую опасность и требует строгого соблюдения правил безопасности.</p>
+        <p>Безопасная работа с электроустановками требует строгого соблюдения правил и процедур. Это основное условие предотвращения несчастных случаев и обеспечения безопасности персонала.</p>
+        <p>Перед началом любых работ необходимо отключить питание. Это первое и самое важное правило безопасности. Отключение питания должно быть полным и надежным, с блокировкой и маркировкой.</p>
+        <p>Проверка отсутствия напряжения обязательна перед началом работ. Это выполняется с помощью испытанных указателей напряжения. Проверка должна проводиться на всех фазах и нулевом проводнике.</p>
+        <p>Установка блокировок и предупреждающих знаков предотвращает случайное включение оборудования другими лицами. Блокировки должны быть механическими, знаки должны быть видимыми и понятными.</p>
+        <p>Только при соблюдении всех мер безопасности можно приступать к выполнению работ. Нарушение правил безопасности может привести к тяжелым последствиям.</p>
+        <p>При работе под напряжением необходимо использовать специальные средства защиты. Это диэлектрические перчатки, защитные очки, каски, изолирующие коврики. Все средства защиты должны соответствовать требованиям стандартов.</p>
+        <p>Соблюдение безопасных расстояний при работе под напряжением обязательно. Расстояния определяются нормативными документами и зависят от напряжения. Нарушение безопасных расстояний может привести к электрической дуге.</p>
+        <p>Иметь квалификацию и разрешение на работу под напряжением обязательно. Работа под напряжением требует специальных знаний и навыков. Без квалификации и разрешения работа под напряжением запрещена.</p>
+        <p>Работа под напряжением должна выполняться только в исключительных случаях. Когда невозможно отключить питание, работа под напряжением допустима. Но только при соблюдении всех требований безопасности.</p>
+        <p>При выполнении работ вблизи токоведущих частей необходимо использовать диэлектрические перчатки. Перчатки должны соответствовать классу напряжения и быть испытанными. Перед каждым использованием перчатки должны осматриваться.</p>
+        <p>Защитные очки необходимы при работе с токоведущими частями. Очки защищают глаза от искр, брызг, ультрафиолетового излучения. Очки должны соответствовать требованиям стандартов.</p>
+        <p>Каски с диэлектрическими свойствами защищают голову от ударов и электрического тока. Каски должны соответствовать классу напряжения и быть испытанными. Каски должны иметь регулируемый размер.</p>
+        <p>Изолирующие коврики создают дополнительную защиту при работе с токоведущими частями. Коврики должны соответствовать классу напряжения и быть испытанными. Коврики должны быть сухими и чистыми.</p>
+        <p>Все инструменты должны иметь изолированные ручки. Инструменты должны соответствовать требованиям стандартов и быть испытанными. Перед каждым использованием инструменты должны осматриваться.</p>
+        <p>При работе с высоковольтным оборудованием необходимо соблюдать особую осторожность. Высокое напряжение представляет особую опасность и требует строгого соблюдения правил безопасности.</p>
+        <p>Использование специальных средств защиты обязательно при работе с высоковольтным оборудованием. Это дугостойкая одежда, защитные щитки, перчатки, каски. Все средства защиты должны соответствовать требованиям стандартов.</p>
+        <p>Иметь соответствующую квалификацию обязательно при работе с высоковольтным оборудованием. Высоковольтное оборудование требует специальных знаний и навыков. Без квалификации работа с высоковольтным оборудованием запрещена.</p>
+        <p>Соблюдение безопасных расстояний при работе с высоковольтным оборудованием обязательно. Расстояния определяются нормативными документами и зависят от напряжения. Нарушение безопасных расстояний может привести к смертельным последствиям.</p>
+        <p>Работа с высоковольтным оборудованием должна выполняться бригадой. Один человек не может выполнять работу с высоковольтным оборудованием. Бригада должна иметь квалификацию и разрешение.</p>
+        <p>Наличие наблюдателя обязательно при работе с высоковольтным оборудованием. Наблюдатель следит за безопасностью работы и может оказать помощь при необходимости. Наблюдатель должен иметь квалификацию.</p>
+        <p>Использование специального оборудования обязательно при работе с высоковольтным оборудованием. Это изолирующие штанги, указатели напряжения, заземляющие проводники. Оборудование должно соответствовать требованиям стандартов.</p>
+        <p>Проведение инструктажа обязательно перед началом работы с высоковольтным оборудованием. Инструктаж включает в себя ознакомление с оборудованием, мерами безопасности, действиями при аварии. Инструктаж должен проводить квалифицированный персонал.</p>
+      </div>
+      
+      <div class="card">
+        <h3><i class="fas fa-wrench"></i> 7.2 Техническое обслуживание</h3>
+        <p>Регулярное техническое обслуживание электрооборудования является важной мерой профилактики аварийных ситуаций. Неисправное оборудование может стать источником опасности для персонала и привести к серьёзным последствиям. Плановые проверки включают в себя визуальный осмотр, измерение параметров, испытания на электрическую прочность.</p>
+        <p>Все результаты проверок должны документироваться и анализироваться для выявления тенденций и потенциальных проблем. Своевременное обнаружение и устранение неисправностей позволяет предотвратить аварии и обеспечить безопасную эксплуатацию электрических установок. Регулярное обучение персонала также является важной частью системы электробезопасности.</p>
+        <p>Регулярное техническое обслуживание электрооборудования является важной мерой профилактики аварийных ситуаций. Это основное условие обеспечения надежной и безопасной эксплуатации электрооборудования.</p>
+        <p>Неисправное оборудование может стать источником опасности для персонала и привести к серьёзным последствиям. Поэтому регулярное техническое обслуживание обязательно для всех видов электрооборудования.</p>
+        <p>Плановые проверки включают в себя визуальный осмотр, измерение параметров, испытания на электрическую прочность. Все виды проверок необходимы для полной оценки состояния оборудования.</p>
+        <p>Визуальный осмотр позволяет выявить внешние повреждения, загрязнения, коррозию, перегрев. Осмотр должен проводиться регулярно и тщательно. Все выявленные дефекты должны быть устранены.</p>
+        <p>Измерение параметров позволяет определить электрические характеристики оборудования. Это сопротивление изоляции, сопротивление заземления, токи утечки, напряжение. Все измерения должны проводиться приборами соответствующей точности.</p>
+        <p>Испытания на электрическую прочность позволяют выявить скрытые дефекты изоляции. Испытания проводятся высоким напряжением в течение определенного времени. Испытания должны проводиться специалистами с соблюдением мер безопасности.</p>
+        <p>Все результаты проверок должны документироваться. Документация необходима для анализа состояния оборудования, планирования ремонта, расследования аварий. Документация должна храниться в течение установленного срока.</p>
+        <p>Анализ результатов проверок позволяет выявить тенденции и потенциальные проблемы. Анализ должен проводиться регулярно и тщательно. По результатам анализа должны приниматься меры по устранению проблем.</p>
+        <p>Своевременное обнаружение и устранение неисправностей позволяет предотвратить аварии и обеспечить безопасную эксплуатацию электрических установок. Это основная цель технического обслуживания.</p>
+        <p>Регулярное обучение персонала также является важной частью системы электробезопасности. Персонал должен знать правила технического обслуживания, уметь выполнять проверки, устранять неисправности.</p>
+        <p>Периодичность технического обслуживания определяется нормативными документами и зависит от типа оборудования, условий эксплуатации, важности. Для ответственного оборудования периодичность выше.</p>
+        <p>Типы технического обслуживания: профилактическое, текущий ремонт, капитальный ремонт. Каждый тип имеет свои цели, объем, периодичность.</p>
+        <p>Профилактическое обслуживание выполняется для предотвращения неисправностей. Оно включает в себя осмотр, чистку, смазку, регулировку. Профилактическое обслуживание выполняется регулярно.</p>
+        <p>Текущий ремонт выполняется для устранения неисправностей. Он включает в себя замену изношенных деталей, восстановление характеристик. Текущий ремонт выполняется по мере необходимости.</p>
+        <p>Капитальный ремонт выполняется для восстановления ресурса оборудования. Он включает в себя полную разборку, замену всех изношенных деталей, испытания. Капитальный ремонт выполняется по графику.</p>
+        <p>Порядок технического обслуживания определяется инструкциями, технологическими картами. Порядок должен соблюдаться строго. Нарушение порядка может привести к аварии.</p>
+        <p>Ответственность за техническое обслуживание несут ответственные лица. Они должны иметь квалификацию, опыт, знание оборудования. Ответственные лица должны контролировать выполнение работ.</p>
+        <p>Документация по техническому обслуживанию включает в себя журналы, акты, отчеты. Документация должна быть полной, точной, своевременной. Документация необходима для анализа, планирования, контроля.</p>
+        <p>Контроль технического обслуживания выполняется ответственными лицами, службой качества, внешними организациями. Контроль необходим для обеспечения качества работ.</p>
+        <p>Учет технического обслуживания ведется в специальных программах, базах данных. Учет необходим для анализа, планирования, контроля. Учет должен быть полным, точным, своевременным.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tests">
+    <div class="container">
+      <h2 class="section-title">ТЕСТЫ ПО ЭЛЕКТРОБЕЗОПАСНОСТИ (от 2024 года)</h2>
+      
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">Все</button>
+        <button class="filter-btn" data-filter="group1">I группа</button>
+        <button class="filter-btn" data-filter="group2">II группа</button>
+        <button class="filter-btn" data-filter="group3">III группа</button>
+        <button class="filter-btn" data-filter="group4">IV группа</button>
+        <button class="filter-btn" data-filter="group5">V группа</button>
+      </div>
+      
+      <div class="tabs">
+        <div class="tab active" data-tab="tests">Тесты</div>
+        <div class="tab" data-tab="tickets">Билеты</div>
+        <div class="tab" data-tab="practice">Практика</div>
+      </div>
+      
+      <div class="tab-content active" id="tests-tab">
+        <div class="test-selection">
+          <div class="test-card" data-group="group1">
+            <h4><i class="fas fa-file-alt"></i> Тест по основам электробезопасности</h4>
+            <p>Тест для I группы допуска по электробезопасности. Содержит 25 вопросов.</p>
+            <div class="test-meta">
+              <span><i class="fas fa-user"></i> I группа</span>
+              <span><i class="fas fa-question"></i> 25 вопросов</span>
+            </div>
+          </div>
+          
+          <div class="test-card" data-group="group1">
+            <h4><i class="fas fa-file-alt"></i> Тест по средствам защиты</h4>
+            <p>Тест по средствам индивидуальной защиты для I группы допуска.</p>
+            <div class="test-meta">
+              <span><i class="fas fa-user"></i> I группа</span>
+              <span><i class="fas fa-question"></i> 30 вопросов</span>
+            </div>
+          </div>
+          
+          <div class="test-card" data-group="group2">
+            <h4><i class="fas fa-file-alt"></i> Тест по электрическим установкам</h4>
+            <p>Тест для II группы допуска. Охватывает устройство электроустановок.</p>
+            <div class="test-meta">
+              <span><i class="fas fa-user"></i> II группа</span>
+              <span><i class="fas fa-question"></i> 35 вопросов</span>
+            </div>
+          </div>
+          
+          <div class="test-card" data-group="group2">
+            <h4><i class="fas fa-file-alt"></i> Тест по правилам эксплуатации</h4>
+            <p>Тест по правилам технической эксплуатации электроустановок.</p>
+            <div class="test-meta">
+              <span><i class="fas fa-user"></i> II группа</span>
+              <span><i class="fas fa-question"></i> 40 вопросов</span>
+            </div>
+          </div>
+          
+          <div class="test-card" data-group="group3">
+            <h4><i class="fas fa-file-alt"></i> Тест по электротехнике</h4>
+            <p>Тест для III группы допуска. Охватывает основы электротехники.</p>
+            <div class="test-meta">
+              <span><i class="fas fa-user"></i> III группа</span>
+              <span><i class="fas fa-question"></i> 45 вопросов</span>
+            </div>
+          </div>
+          
+          <div class="test-card" data-group="group3">
+            <h4><i class="fas fa-file-alt"></i> Тест по аварийным ситуациям</h4>
+            <p>Тест по действиям в аварийных ситуациях для III группы допуска.</p>
+            <div class="test-meta">
+              <span><i class="fas fa-user"></i> III группа</span>
+              <span><i class="fas fa-question"></i> 30 вопросов</span>
+            </div>
+          </div>
+          
+          <div class="test-card" data-group="group4">
+            <h4><i class="fas fa-file-alt"></i> Тест по проектированию</h4>
+            <p>Тест для IV группы допуска. Охватывает проектирование электроустановок.</p>
+            <div class="test-meta">
+              <span><i class="fas fa-user"></i> IV группа</span>
+              <span><i class="fas fa-question"></i> 50 вопросов</span>
+            </div>
+          </div>
+          
+          <div class="test-card" data-group="group4">
+            <h4><i class="fas fa-file-alt"></i> Тест по энергоснабжению</h4>
+            <p>Тест по системам энергоснабжения для IV группы допуска.</p>
+            <div class="test-meta">
+              <span><i class="fas fa-user"></i> IV группа</span>
+              <span><i class="fas fa-question"></i> 45 вопросов</span>
+            </div>
+          </div>
+          
+          <div class="test-card" data-group="group5">
+            <h4><i class="fas fa-file-alt"></i> Тест по управлению безопасностью</h4>
+            <p>Тест для V группы допуска. Охватывает управление охраной труда.</p>
+            <div class="test-meta">
+              <span><i class="fas fa-user"></i> V группа</span>
+              <span><i class="fas fa-question"></i> 60 вопросов</span>
+            </div>
+          </div>
+          
+          <div class="test-card" data-group="group5">
+            <h4><i class="fas fa-file-alt"></i> Тест по международным стандартам</h4>
+            <p>Тест по международным стандартам электробезопасности.</p>
+            <div class="test-meta">
+              <span><i class="fas fa-user"></i> V группа</span>
+              <span><i class="fas fa-question"></i> 55 вопросов</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tab-content" id="tickets-tab">
+        <div class="test-selection">
+          <div class="test-card" data-group="group1">
+            <h4><i class="fas fa-ticket-alt"></i> Билет №1 - I группа</h4>
+            <p>Первый билет для проверки знаний I группы допуска по электробезопасности.</p>
+            <div class="test-meta">
+              <span><i class="fas fa-user"></i> I группа</span>
+              <span><i class="fas fa-question"></i> 5 вопросов</span>
+            </div>
+          </div>
+          
+          <div class="test-card" data-group="group1">
+            <h4><i class="fas fa-ticket-alt"></i> Билет №2 - I группа</h4>
+            <p>Второй билет для проверки знаний I группы допуска по электробезопасности.</p>
+            <div class="test-meta">
+              <span><i class="fas fa-user"></i> I группа</span>
+              <span><i class="fas fa-question"></i> 5 вопросов</span>
+            </div>
+          </div>
+          
+          <div class="test-card" data-group="group2">
+            <h4><i class="fas fa-ticket-alt"></i> Билет №1 - II группа</h4>
+            <p>Первый билет для проверки знаний II группы допуска по электробезопасности.</p>
+            <div class="test-meta">
+              <span><i class="fas fa-user"></i> II группа</span>
+              <span><i class="fas fa-question"></i> 5 вопросов</span>
+            </div>
+          </div>
+          
+          <div class="test-card" data-group="group2">
+            <h4><i class="fas fa-ticket-alt"></i> Билет №2 - II группа</h4>
+            <p>Второй билет для проверки знаний II группы допуска по электробезопасности.</p>
+            <div class="test-meta">
+              <span><i class="fas fa-user"></i> II группа</span>
+              <span><i class="fas fa-question"></i> 5 вопросов</span>
+            </div>
+          </div>
+          
+          <div class="test-card" data-group="group3">
+            <h4><i class="fas fa-ticket-alt"></i> Билет №1 - III группа</h4>
+            <p>Первый билет для проверки знаний III группы допуска по электробезопасности.</p>
+            <div class="test-meta">
+              <span><i class="fas fa-user"></i> III группа</span>
+              <span><i class="fas fa-question"></i> 5 вопросов</span>
+            </div>
+          </div>
+          
+          <div class="test-card" data-group="group3">
+            <h4><i class="fas fa-ticket-alt"></i> Билет №2 - III группа</h4>
+            <p>Второй билет для проверки знаний III группы допуска по электробезопасности.</p>
+            <div class="test-meta">
+              <span><i class="fas fa-user"></i> III группа</span>
+              <span><i class="fas fa-question"></i> 5 вопросов</span>
+            </div>
+          </div>
+          
+          <div class="test-card" data-group="group4">
+            <h4><i class="fas fa-ticket-alt"></i> Билет №1 - IV группа</h4>
+            <p>Первый билет для проверки знаний IV группы допуска по электробезопасности.</p>
+            <div class="test-meta">
+              <span><i class="fas fa-user"></i> IV группа</span>
+              <span><i class="fas fa-question"></i> 5 вопросов</span>
+            </div>
+          </div>
+          
+          <div class="test-card" data-group="group4">
+            <h4><i class="fas fa-ticket-alt"></i> Билет №2 - IV группа</h4>
+            <p>Второй билет для проверки знаний IV группы допуска по электробезопасности.</p>
+            <div class="test-meta">
+              <span><i class="fas fa-user"></i> IV группа</span>
+              <span><i class="fas fa-question"></i> 5 вопросов</span>
+            </div>
+          </div>
+          
+          <div class="test-card" data-group="group5">
+            <h4><i class="fas fa-ticket-alt"></i> Билет №1 - V группа</h4>
+            <p>Первый билет для проверки знаний V группы допуска по электробезопасности.</p>
+            <div class="test-meta">
+              <span><i class="fas fa-user"></i> V группа</span>
+              <span><i class="fas fa-question"></i> 5 вопросов</span>
+            </div>
+          </div>
+          
+          <div class="test-card" data-group="group5">
+            <h4><i class="fas fa-ticket-alt"></i> Билет №2 - V группа</h4>
+            <p>Второй билет для проверки знаний V группы допуска по электробезопасности.</p>
+            <div class="test-meta">
+              <span><i class="fas fa-user"></i> V группа</span>
+              <span><i class="fas fa-question"></i> 5 вопросов</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tab-content" id="practice-tab">
+        <div class="quiz-container">
+          <h3><i class="fas fa-graduation-cap"></i> Пример теста по электробезопасности</h3>
+          <div class="progress-container">
+            <div class="progress-bar">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text">
+              <span>Вопрос 1 из 10</span>
+              <span>0%</span>
+            </div>
+          </div>
+          
+          <div class="quiz-question">
+            <div class="question-text">1. Что означает аббревиатура PPE в контексте электробезопасности?</div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="a">
+                Personal Protective Equipment
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="b">
+                Public Protection Element
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="c">
+                Power Protection Equipment
+              </label>
+            </div>
+          </div>
+          
+          <div class="quiz-question">
+            <div class="question-text">2. Какой стандарт регулирует электробезопасность на рабочем месте в США?</div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="a">
+                IEC 60364
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="b">
+                NFPA 70E
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="c">
+                ISO 45001
+              </label>
+            </div>
+          </div>
+          
+          <div class="quiz-question">
+            <div class="question-text">3. Какое максимальное сопротивление заземления допустимо для сетей с глухозаземлённой нейтралью согласно нормативным документам?</div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="a">
+                2 Ом
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="b">
+                4 Ом
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="c">
+                10 Ом
+              </label>
+            </div>
+          </div>
+          
+          <div class="quiz-question">
+            <div class="question-text">4. Что означает стандарт IEC 60364?</div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="a">
+                Low-voltage electrical installations
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="b">
+                High-voltage electrical systems
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q4" value="c">
+                Electrical safety in the workplace
+              </label>
+            </div>
+          </div>
+          
+          <div class="quiz-question">
+            <div class="question-text">5. Какой раздел OSHA регулирует требования к обучению персонала по электробезопасности?</div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="a">
+                1910.300
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="b">
+                1910.332
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="c">
+                1910.399
+              </label>
+            </div>
+          </div>
+          
+          <div class="quiz-question">
+            <div class="question-text">6. Какой класс диэлектрических перчаток предназначен для работы под напряжением до 17000 В?</div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="a">
+                Класс 1
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="b">
+                Класс 2
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q6" value="c">
+                Класс 3
+              </label>
+            </div>
+          </div>
+          
+          <div class="quiz-question">
+            <div class="question-text">7. Что означает аббревиатура OSHA?</div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="a">
+                Occupational Safety and Health Administration
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="b">
+                Organization for Safety and Health Assessment
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q7" value="c">
+                Office of Safety and Health Assurance
+              </label>
+            </div>
+          </div>
+          
+          <div class="quiz-question">
+            <div class="question-text">8. Какой минимальный срок между испытаниями диэлектрических перчаток?</div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="a">
+                3 месяца
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="b">
+                6 месяцев
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q8" value="c">
+                12 месяцев
+              </label>
+            </div>
+          </div>
+          
+          <div class="quiz-question">
+            <div class="question-text">9. Какой стандарт определяет категории риска в NFPA 70E?</div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q9" value="a">
+                Arc Flash Hazard Analysis
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q9" value="b">
+                Risk Assessment Matrix
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q9" value="c">
+                Personal Protective Equipment
+              </label>
+            </div>
+          </div>
+          
+          <div class="quiz-question">
+            <div class="question-text">10. Что означает "Basic protection" в IEC 60364?</div>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q10" value="a">
+                Защита при повреждении
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q10" value="b">
+                Основная защита
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q10" value="c">
+                Дополнительная защита
+              </label>
+            </div>
+          </div>
+          
+          <button class="cta-button" onclick="checkQuiz()">Проверить результаты</button>
+          
+          <div class="result-container" id="resultContainer">
+            <div class="result-score" id="score">0/10</div>
+            <p id="resultMessage">Отличная работа! Вы успешно завершили тест.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="literature">
+    <div class="container">
+      <h2 class="section-title">ЛИТЕРАТУРА</h2>
+      <div class="card">
+        <h3><i class="fas fa-book"></i> Нормативные документы</h3>
+        <div class="literature-item">
+          <h4>IEC 60364-4-41: Low-voltage electrical installations - Part 4-41: Protection for safety - Protection against electric shock</h4>
+          <p>Международная электротехническая комиссия, 2017</p>
+          <p>Основной международный стандарт по защите от поражения электрическим током в низковольтных установках.</p>
+        </div>
+        
+        <div class="literature-item">
+          <h4>NFPA 70E: Standard for Electrical Safety in the Workplace</h4>
+          <p>National Fire Protection Association, 2021 Edition</p>
+          <p>Ведущий стандарт по электробезопасности на рабочем месте в США.</p>
+        </div>
+        
+        <div class="literature-item">
+          <h4>OSHA 29 CFR 1910.300-399: Occupational Safety and Health Standards for Electrical</h4>
+          <p>Occupational Safety and Health Administration, United States Department of Labor</p>
+          <p>Федеральные стандарты по охране труда при работе с электрическими установками в США.</p>
+        </div>
+        
+        <div class="literature-item">
+          <h4>Правила устройства электроустановок (ПУЭ)</h4>
+          <p>Минэнерго России, 7-е издание</p>
+          <p>Основной нормативный документ по устройству электроустановок в Российской Федерации.</p>
+        </div>
+      </div>
+      
+      <div class="card">
+        <h3><i class="fas fa-book-open"></i> Учебная литература</h3>
+        <div class="literature-item">
+          <h4>Электробезопасность: Учебное пособие для вузов</h4>
+          <p>Будов В.М., Будов В.В. - М.: Академия, 2019</p>
+          <p>Комплексное учебное пособие, охватывающее все аспекты электробезопасности.</p>
+        </div>
+        
+        <div class="literature-item">
+          <h4>Electrical Safety Handbook</h4>
+          <p>McPartland, J., et al. - McGraw-Hill Education, 2018</p>
+          <p>Практическое руководство по электробезопасности с примерами из практики.</p>
+        </div>
+        
+        <div class="literature-item">
+          <h4>Электротехника и электроника: Учебник для вузов</h4>
+          <p>Герасимов В.Г. - М.: Академия, 2020</p>
+          <p>Фундаментальный учебник, включающий разделы по электробезопасности.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <i class="fas fa-bolt"></i>
+          <span>ЭЛЕКТРОБЕЗОПАСНОСТЬ</span>
+        </div>
+        <p class="footer-text">Комплексное руководство для профессиональных электриков по обеспечению безопасности при работе с электрическими установками</p>
+        <p class="copyright">2025 Все права защищены. Автор Nes_Stixxi | Сайт сделан для защиты проекта</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll progress indicator
+    window.onscroll = function() {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById("scrollProgress").style.width = scrolled + "%";
+      
+      // Show/hide back to top button
+      const backToTop = document.getElementById("backToTop");
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        backToTop.classList.add("show");
+      } else {
+        backToTop.classList.remove("show");
+      }
+    };
+    
+    // Back to top functionality
+    document.getElementById("backToTop").addEventListener("click", function() {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Tab navigation
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', function() {
+        // Remove active class from all tabs
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        
+        // Add active class to clicked tab
+        this.classList.add('active');
+        
+        // Show corresponding content
+        const tabId = this.getAttribute('data-tab');
+        document.getElementById(`${tabId}-tab`).classList.add('active');
+      });
+    });
+    
+    // Filter functionality
+    document.querySelectorAll('.filter-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        // Remove active class from all buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        
+        // Add active class to clicked button
+        this.classList.add('active');
+        
+        // Get filter value
+        const filter = this.getAttribute('data-filter');
+        
+        // Show/hide test cards based on filter
+        document.querySelectorAll('.test-card').forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-group') === filter) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+    
+    // Chapter navigation
+    document.querySelectorAll('.chapter-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        document.querySelectorAll('.chapter-btn').forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+    
+    // Quiz functionality
+    function checkQuiz() {
+      let score = 0;
+      const total = 10;
+      
+      // Check answers
+      if (document.querySelector('input[name="q1"]:checked')?.value === 'a') score++;
+      if (document.querySelector('input[name="q2"]:checked')?.value === 'b') score++;
+      if (document.querySelector('input[name="q3"]:checked')?.value === 'b') score++;
+      if (document.querySelector('input[name="q4"]:checked')?.value === 'a') score++;
+      if (document.querySelector('input[name="q5"]:checked')?.value === 'b') score++;
+      if (document.querySelector('input[name="q6"]:checked')?.value === 'b') score++;
+      if (document.querySelector('input[name="q7"]:checked')?.value === 'a') score++;
+      if (document.querySelector('input[name="q8"]:checked')?.value === 'b') score++;
+      if (document.querySelector('input[name="q9"]:checked')?.value === 'a') score++;
+      if (document.querySelector('input[name="q10"]:checked')?.value === 'b') score++;
+      
+      // Display results
+      const scoreElement = document.getElementById('score');
+      const messageElement = document.getElementById('resultMessage');
+      const resultContainer = document.getElementById('resultContainer');
+      
+      scoreElement.textContent = `${score}/${total}`;
+      
+      if (score === total) {
+        messageElement.textContent = "Отличная работа! Вы эксперт в области электробезопасности!";
+        messageElement.style.color = "var(--success)";
+      } else if (score >= total/2) {
+        messageElement.textContent = "Хороший результат! Но стоит повторить некоторые темы.";
+        messageElement.style.color = "var(--accent)";
+      } else {
+        messageElement.textContent = "Рекомендуем повторно изучить материал по электробезопасности.";
+        messageElement.style.color = "var(--danger)";
+      }
+      
+      resultContainer.classList.add('show');
+      
+      // Update progress
+      const progressFill = document.getElementById('progressFill');
+      const progressText = document.querySelector('.progress-text');
+      const percentage = Math.round((score / total) * 100);
+      progressFill.style.width = `${percentage}%`;
+      progressText.innerHTML = `<span>Результат: ${score}/${total}</span><span>${percentage}%</span>`;
+    }
+    
+    // Add animation to cards when they come into view
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.card').forEach(card => {
+      card.style.animationPlayState = 'paused';
+      observer.observe(card);
+    });
+    
+    // Test card click functionality
+    document.querySelectorAll('.test-card').forEach(card => {
+      card.addEventListener('click', function() {
+        const title = this.querySelector('h4').textContent;
+        alert(`Вы выбрали: ${title}\n\nВ реальном приложении здесь откроется соответствующий тест.`);
+      });
+    });
+  </script>
+</body>
+</html>
